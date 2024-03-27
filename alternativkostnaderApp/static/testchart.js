@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function renderChart(data) {
         return new Chart(ctx, {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: data.labels,
                 datasets: [{
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }]
             },
             options: {
-                // Add any options you need here
+                indexAxis: 'y',
             }
         });
     }
