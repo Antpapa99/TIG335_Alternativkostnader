@@ -1,18 +1,32 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body">
     <header></header>
     <main id="indexmain">
+        <article id="navbar">
+            <img id="bild2" src="SCDIlogo.png">
+            <p id="gruppnamn">Data Men Inc.</p>
+        </article>
+        <article id="omoss">
+            <h3>Om oss</h3>
+            <p>infoinfoinfoinfoinfoinfoinfoinfo
+                <br>
+                infoinfoinfoinfoinfoinfoinfoinfo
+                <br>
+                infoinfoinfoinfoinfoinfoinfoinfo
+                <br>
+                infoinfoinfoinfoinfoinfoinfoinfo
+            </p>
+        </article>
         <article id="textbody">
         <h1 id="titletext">Om Verktyget</h1>
-        <img id="bild1" src="{% static 'alternativkostnad.webp' %}" alt="Bild på X">
+        <img id="bild1" src="alternativkostnad.webp" alt="Bild på X">
         <p id="textbes">
             placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
             placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
@@ -28,7 +42,7 @@
         </p>
         </article>
         <button id="nextbutton">
-            <a href="/verktyg">Gå till verktyget</a>
+            <a href="data.html">Ange din data!</a>
         </button>
     </main>
     <footer id="footersect">
