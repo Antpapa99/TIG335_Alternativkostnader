@@ -14,5 +14,5 @@ def verktyg(request):
 def testrequest(request):
     commune = Commune.objects.all()
     serializer = CommuneSerializer(commune, many=True)
-    return JsonResponse({"commune":serializer.data}, safe=False)
+    return JsonResponse(serializer.data, safe=False)
 
