@@ -12,7 +12,7 @@ def verktyg(request):
     return render(request, 'verktyg.html')
 
 def testrequest(request):
-    commune = CommuneTechnology.objects.all()
-    serializer = CommuneTechnologySerializer(commune, many=True)
-    return JsonResponse(serializer.data, safe=False)
+    commune = Commune.objects.all()
+    serializer = CommuneSerializer(commune, many=True)
+    return JsonResponse({"commune":serializer.data}, safe=False)
 
