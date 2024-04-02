@@ -4,5 +4,5 @@ from . import views
 urlpatterns = [
     path("", views.home),
     path("verktyg", views.verktyg),
-    path('commune/', views.testrequest),
+    path('commune/', views.commune_list),
 ]
