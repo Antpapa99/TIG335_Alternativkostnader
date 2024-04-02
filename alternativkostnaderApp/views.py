@@ -13,6 +13,8 @@ def home(request):
 def verktyg(request):
     return render(request, 'verktyg.html')
 
+#Simple API call to get a list of communes in json or be able to add new objects with a direct API input
+
 @api_view(['GET', 'POST'])
 def commune_list(request):
     if request.method == 'GET':

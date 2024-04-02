@@ -16,6 +16,7 @@ class CommuneSerializer(serializers.ModelSerializer):
         model = Commune
         fields = ['commune_name', 'technologies']
 
+    #This function allows us to create a new object which has a nested object
     def create(self, validated_data):
         technologies_data = validated_data.pop('technologies')
         commune_name = Commune.objects.create(**validated_data)
