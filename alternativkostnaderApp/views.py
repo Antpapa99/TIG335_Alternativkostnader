@@ -17,18 +17,16 @@ def verktyg(request):
 
 @api_view(['GET', 'POST'])
 def commune_list(request):
-    try:
-        commune = Commune.objects.all()
-    except Commune.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
+        commune = Commune.objects.all()
         serializer = CommuneSerializer(commune, many=True)
         return Response(serializer.data)
-    if request.method == 'POST':
+    elif request.method == 'POST':
         serializer = CommuneSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
 def commune_detail(request, id):
