@@ -22,13 +22,19 @@
 
             <select name="Kommun" id="kommunid">
                 <option value="">Klicka för att välja din kommun</option>
-                <option value="kommunlista">Kommunlista</option>
-                <option value="Göteborg">Göteborg</option>
-                <option value="Kungsbacka">Kungsbacka</option>
-                <option value="Mölndal">Mölndal</option>
-                <option value="Partille">Partille</option>
-                <option value="Stockholm">Stockholm</option>
             </select>
+            <script src="../static/kommunLista.js"></script>
+            <script>
+              var dropdown = document.getElementById("kommunid");
+          
+              // Lägg till varje kommun som ett alternativ till dropdown-menyn
+              kommuner.forEach(function(kommun) {
+                var option = document.createElement("option");
+                option.text = kommun;
+                option.value = kommun;
+                dropdown.add(option);
+              });
+            </script>
         </article>
 
         <article id="teknikchoice">
