@@ -9,7 +9,11 @@ class Commune(models.Model):
 class Technology(models.Model):
     commune_name = models.ForeignKey(Commune, related_name='technologies', on_delete=models.CASCADE)
     tech_name = models.CharField(max_length=100)
-    value = models.IntegerField()
+    Antal_installationer = models.IntegerField()
+    Mojliga_installationer = models.IntegerField()
+    Kostnad_per_installation = models.FloatField()
+    Arlig_besparing_per_installation_SEK = models.FloatField()
+    Arlig_besparing_per_installation_HTE = models.IntegerField()
 
     class Meta:
         # Remove unique constraint
