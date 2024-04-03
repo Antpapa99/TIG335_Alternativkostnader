@@ -28,12 +28,15 @@ class CommuneSerializer(serializers.ModelSerializer):
     #This here will probably need better variable names
     def update(self, instance, validated_data):
         technologies_data = validated_data.pop('technologies')
+
+        #This here is the variable for technologies
         techs = (instance.technologies).all()
         techs = list(techs)
+        #This here is the variabel for the commune name of the specific instance
         instance.commune_name = validated_data.get('commune_name', instance.commune_name)
         instance.save()
 
-
+        #This is for each technology in the nested serializer
         for technology_data in technologies_data:
             technology = techs.pop(0)
             technology.tech_name = technology_data.get('tech_name', technology.tech_name)
