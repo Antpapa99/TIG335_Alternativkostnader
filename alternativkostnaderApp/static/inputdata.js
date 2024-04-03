@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 function fetchCommuneData() {
     fetch("http://127.0.0.1:8000/commune/")
         .then(response => {
@@ -41,7 +40,7 @@ function getCommuneIdFromMap(communeIdMap) {
     return communeIdMap[kommun];
 }
 
-// This function returns the data in json format 
+// This function returns the data in json format
 function prepareData(communeId) {
     const kommun = document.getElementById("kommunid").value;
     const teknik = document.getElementById("teknikid").value;

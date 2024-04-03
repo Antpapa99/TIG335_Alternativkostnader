@@ -24,17 +24,6 @@
                 <option value="">Klicka för att välja din kommun</option>
             </select>
             <script src="../static/kommunLista.js"></script>
-            <script>
-              var dropdown = document.getElementById("kommunid");
-          
-              // Lägg till varje kommun som ett alternativ till dropdown-menyn
-              kommuner.forEach(function(kommun) {
-                var option = document.createElement("option");
-                option.text = kommun;
-                option.value = kommun;
-                dropdown.add(option);
-              });
-            </script>
         </article>
 
         <article id="teknikchoice">

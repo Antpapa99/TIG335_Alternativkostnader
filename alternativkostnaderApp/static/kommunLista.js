@@ -1,4 +1,4 @@
-var kommuner = [
+const kommuner = [
   "Ale kommun",
   "Alingsås kommun",
   "Alvesta kommun",
@@ -290,3 +290,19 @@ var kommuner = [
   "Överkalix kommun",
   "Övertorneå kommun"
 ];
+
+function populateDropdown(kommuner) {
+  let dropdown = document.getElementById("kommunid");
+
+  kommuner.forEach(function(kommun) {
+      let option = document.createElement("option");
+      option.text = kommun;
+      option.value = kommun;
+      dropdown.appendChild(option);
+  });
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    populateDropdown(kommuner);
+});
