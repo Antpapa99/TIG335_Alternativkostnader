@@ -5,31 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="../static/style.css">
 </head>
-<body>
+<body id="body">
     <header></header>
-    <main id="verktygmain">
-        <section id="altbar">
-            <ul>
-                <li>Alternativkostnad</a></li> 
-                <li>Penetrationsgrad</a></li>
-                <li>Potential</a></li>
-                <li>Besparingar</a></li>
-            </ul>
-        </section>
-        <article id="mainspace">
-
+    <main id="datamain">
+        <article id="navbar">
+            <img id="bild2" src="SCDIlogo.png">
+            <p id="gruppnamn">Data Men Inc.</p>
         </article>
 
+        <h1 id="datatitle">Ange din data!</h1>
+
+        <article id="kommunchoice">
+            <label for="kommunid">Välj din kommun</label>
+
+            <select name="Kommun" id="kommunid">
+                <option value="">Klicka för att välja din kommun</option>
+            </select>
+            <script src="../static/kommunLista.js"></script>
+        </article>
+
+        <article id="teknikchoice">
+            <label for="teknikid">Välj teknik</label>
+
+            <select name="teknik" id="teknikid">
+                <option value="">Klicka för att välja teknik</option>
+                <option value="lås">Digitala lås</option>
+                <option value="tilld">Digital tillsyn (dag)</option>
+                <option value="tilln">Digital tillsyn (natt)</option>
+                <option value="robot">Läkemedelsrobot</option>
+                <option value="larmgps">Digitalt larm (GPS)</option>
+                <option value="larmtrygg">Digitalt larm (trygghet)</option>
+                <option value="larmfall">Fallprevention</option>
+            </select>
+        </article>
+
+        <article id="inputfield">
+            <div>
+                <label for="installationer">Antal installationer</label>
+                <input type="text" id="installationer"></input>
+                <br>
+            </div>
+
+            <div>
+                <label for="minstallationer">Antal möjliga installationer</label>
+                <input type="text" id="minstallationer"></input>
+                <br>
+            </div>
+
+            <div>
+                <label for="kinstallation">Kostnad per installation</label>
+                <input type="text" id="kinstallation"></input>
+                <br>
+            </div>
+
+            <div>
+                <label for="binstallationsek">Årlig besparing per installation (sek/år)</label>
+                <input type="text" id="binstallationsek"></input>
+                <br>
+            </div>
+
+            <div>
+                <label for="inputlarmgps">Årlig besparing per installation (HTE/år)</label>
+                <input type="text" id="binstallationHTE"></input>
+                <br>
+            </div>
+
+            <button type=button id="submitbutton">
+                Skicka in data
+            </button>
+            
+        </article>
+        
+
+        <button type="button" id="nextbutton">
+            <a href="verktyg.html">Gå till verktyget</a>
+        </button>
+
+        <footer id="footersect">
+            <p>
+                Data Men, SCDI
+                <br> 
+                2024
+            </p>
+        </footer>
     </main>
-    <footer id="footersect">
-        <p>
-            Data Men, SCDI
-            <br> 
-            2024
-        </p>
-    </footer>
-    
+    <script src="../static/inputdata.js"></script>
 </body>
 </html>
