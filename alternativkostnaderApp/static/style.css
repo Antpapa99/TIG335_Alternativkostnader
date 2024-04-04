@@ -1,67 +1,44 @@
+/* Gemensamma stilar för index.html och verktyg.html */
+
 #body {
     margin: 0;
     padding: 0;
-
-
 }
+
 #indexmain, #verktygmain, #datamain {
-    background-color: 
-    white;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr ; 
-    grid-template-rows: 0.3fr 1fr 1fr 1fr 1fr 0.5fr; 
     min-height: 100vh;
-
-}
-
-/* Block för knapp till verktygssidan */
-#nextbutton {
-    width: 230px;
-    height: 60px;
-    font-size: 1.3em;
-    grid-area: 5/4/6/5;
-    justify-content: center;
-    align-items: center;
-    margin:auto;
-    color: white;
-    background-color: black;
-    border-radius: 15px;
-    font-size: 1.4em;
-    font-weight: bold;
-}
-
-a:link {
-    color: white;
-    text-decoration: none;
-  }
-
-  a:visited {
-    color: white;
-    text-decoration: none;
-  }
-
-#textbody {
-    grid-area: 2/2/5/7;
-    margin: 0 auto;
-    text-align: center;
 }
 
 #footersect {
     text-align: center;
-    position:relative;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     background-color: black;
     color: white;
-    grid-area: 7/1/8/8;
     padding-top: 3px;
     padding-bottom: 3px;
     margin-top: auto;
 }
 
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* Stilar för index.html */
+
+#textbody {
+    margin: 0 auto;
+    text-align: center;
+}
+
 #titletext {
     font-size: 2.5em;
     padding-bottom: 40px;
-    font-weight:800
+    font-weight: 800;
 }
 
 #textbes {
@@ -75,12 +52,7 @@ a:link {
 }
 
 #navbar {
-    grid-area: 1/1/2/8;
     background-color: black;
-}
-
-#bild2 {
-    margin: 10px
 }
 
 #gruppnamn {
@@ -88,122 +60,91 @@ a:link {
     display: inline;
     font-weight: 800;
     margin: 10px;
-
 }
 
-#omoss {
-    grid-area: 2/7/3/8;
-    padding-left: 40px;
-    background-color: black;
-    color: white;
-    border-radius: 50px 0px 0px 50px;
-    margin-top: 10px;
-    
-}
-
-/*Verktygssidan*/
-
-#altbar {
-    text-align: center;
-    grid-area: 2/3/3/6;
-    color: white;
-    font-size: 1.3em;
-    background: black;
-    margin-bottom: 200px;
-    border-radius: 20px;
-    font-size: bold;
-    margin-top: 20px;
-}
-
-#altbar li {
-    list-style: none;
-    display: inline;
-    padding: 30px;
-}
-
-#altbar li a {
-    text-decoration: none;
-    font-size: bold;
-}
-
-#mainspace {
-    border: 1px solid;
-    border-radius: 20px;
-    grid-area: 2/1/7/8;
-    margin: 120px;
-
-}
-
-#backbutton {
+#nextbutton {
     width: 230px;
     height: 60px;
     font-size: 1.3em;
-    grid-area: 2/1/3/2;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
     color: white;
     background-color: black;
     border-radius: 15px;
     font-size: 1.4em;
     font-weight: bold;
-    margin: 17px;
 }
 
-/*datasida*/
+/* Stilar för verktyg.html */
 
 #datatitle {
-    grid-area: 2/4/3/5;
-    margin: 0 auto;
+    text-align: center;
 }
 
 #kommunchoice {
-    grid-area: 3/3/4/4;
-
+    text-align: left;
 }
 
-#kommunid, #teknikid {
-    width: 300px;
-    height: 23px;
-    font-size: 0.8em;
-    border-radius: 5px;
+#tekniktable {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse; /* Slå ihop gränserna mellan celler */
+    width: 100%; /* Fyll ut tabellen tillgängligt utrymme */
 }
 
-
-#teknikchoice {
-    grid-area: 4/3/5/4;
-
+#tekniktable th,
+#tekniktable td {
+    padding: 10px; /* Lägg till padding för att öka avståndet runt texten i cellerna */
+    border: 1px solid black; /* Lägg till gränser runt cellerna */
 }
 
-#inputfield {
-    grid-area: 3/5/7/7;
-}
-
-#kommunchoice, #teknikchoice, #inputfield {
-    font-weight: 700;
-    font-size: 1.2em;
-}
-
-#inputfield div {
-    margin-bottom: 30px;
-}
-
-#datatitle {
-    margin-top: 20px;
-}
-
-#kommunchoice label, #teknikchoice label, #inputfield label {
+#addRowButton {
+    width: 120px;
+    height: 30px;
+    margin: 20px auto;
     display: block;
-}
-
-#installationer, #minstallationer, #kinstallation, #binstallationsek, #binstallationHTE {
-    width: 350px;
-    height: 23px;
-    border: 2px solid; 
-    border-radius: 5px;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
 }
 
 #submitbutton {
-    grid-area: 4/5/5/6;
-    width: 200px;
+    width: 120px;
     height: 30px;
-    border-radius: 5px;
-    margin-top: auto;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#inputfield label {
+    margin-bottom: 10x; /* Öka avståndet mellan etiketterna */
+}
+
+#kommunchoice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Lägg till luft under artikeln */
+}
+
+#kommunid {
+    width: 300px;
+    height: 30px;
+    margin-top: 10px; /* Lägg till luft över select-elementet */
+}
+
+#kommunid option {
+    color: #333; /* Ange färg på option-elementen */
+}
+
+#kommunchoice label {
+    font-weight: bold;
+    margin-bottom: 10px; /* Lägg till luft under label-elementet */
 }
