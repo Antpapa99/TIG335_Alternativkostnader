@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 
 
+
 class TechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = Technology
@@ -17,6 +18,7 @@ class CommuneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Commune
         fields = ['id', 'commune_name', 'technologies']
+
     
 
     #This function allows us to create a new object which has a nested object
@@ -30,6 +32,8 @@ class CommuneSerializer(serializers.ModelSerializer):
     #This here will probably need better variable names
     def update(self, instance, validated_data):
         technologies_data = validated_data.pop('technologies')
+
+        print(technologies_data)
 
         #This here is the variable for technologies
         techs = (instance.technologies).all()
