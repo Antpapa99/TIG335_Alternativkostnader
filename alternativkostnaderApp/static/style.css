@@ -126,3 +126,25 @@ a:link, a:visited {
 #inputfield label {
     margin-bottom: 10x; /* Öka avståndet mellan etiketterna */
 }
+
+#kommunchoice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Lägg till luft under artikeln */
+}
+
+#kommunid {
+    width: 300px;
+    height: 30px;
+    margin-top: 10px; /* Lägg till luft över select-elementet */
+}
+
+#kommunid option {
+    color: #333; /* Ange färg på option-elementen */
+}
+
+#kommunchoice label {
+    font-weight: bold;
+    margin-bottom: 10px; /* Lägg till luft under label-elementet */
+}
