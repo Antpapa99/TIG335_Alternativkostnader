@@ -38,13 +38,16 @@ class CommuneSerializer(serializers.ModelSerializer):
 
         #This is for each technology in the nested serializer
         for technology_data in technologies_data:
-            technology = techs.pop(0)
-            technology.tech_name = technology_data.get('tech_name', technology.tech_name)
-            technology.Antal_installationer = technology_data.get('Antal_installationer', technology.Antal_installationer)
-            technology.Mojliga_installationer = technology_data.get('Mojliga_installationer', technology.Mojliga_installationer)
-            technology.Kostnad_per_installation = technology_data.get('Kostnad_per_installation', technology.Kostnad_per_installation)
-            technology.Arlig_besparing_per_installation_SEK = technology_data.get('Arlig_besparing_per_installation_SEK', technology.Arlig_besparing_per_installation_SEK)
-            technology.Arlig_besparing_per_installation_HTE = technology_data.get('Arlig_besparing_per_installation_HTE', technology.Arlig_besparing_per_installation_HTE)
-            technology.save()
+            if len(techs) < 1:
+                technology = techs.pop(0)
+                technology.tech_name = technology_data.get('tech_name', technology.tech_name)
+                technology.Antal_installationer = technology_data.get('Antal_installationer', technology.Antal_installationer)
+                technology.Mojliga_installationer = technology_data.get('Mojliga_installationer', technology.Mojliga_installationer)
+                technology.Kostnad_per_installation = technology_data.get('Kostnad_per_installation', technology.Kostnad_per_installation)
+                technology.Arlig_besparing_per_installation_SEK = technology_data.get('Arlig_besparing_per_installation_SEK', technology.Arlig_besparing_per_installation_SEK)
+                technology.Arlig_besparing_per_installation_HTE = technology_data.get('Arlig_besparing_per_installation_HTE', technology.Arlig_besparing_per_installation_HTE)
+                technology.save()
+            else:
+                Technology.objects.create(commune_name=instance, **technology_data)
         return instance 
     
