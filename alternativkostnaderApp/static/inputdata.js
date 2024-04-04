@@ -34,12 +34,12 @@ function getCommuneIdFromMap(communeIdMap) {
 // This function returns the data in json format
 function prepareData(communeId) {
     const kommun = document.getElementById("kommunid").value;
-    const teknik = document.getElementById("tekniktable").value;
-    const installationer = document.getElementById("installationer").value;
-    const minstallationer = document.getElementById("minstallationer").value;
-    const kinstallation = document.getElementById("kinstallation").value;
-    const binstallationsek = document.getElementById("binstallationsek").value;
-    const binstallationHTE = document.getElementById("binstallationHTE").value;
+    const teknik = document.querySelector(".teknikselect").value;
+    const installationer = document.querySelector(".installationer").value;
+    const minstallationer = document.querySelector(".minstallationer").value;
+    const kinstallation = document.querySelector(".kinstallation").value;
+    const binstallationsek = document.querySelector(".binstallationsek").value;
+    const binstallationHTE = document.querySelector(".binstallationHTE").value;
 
     return {
         "id": communeId,
