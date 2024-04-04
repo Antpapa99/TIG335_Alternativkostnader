@@ -52,6 +52,6 @@ class CommuneSerializer(serializers.ModelSerializer):
             # Otherwise, create a new technology
                 Technology.objects.create(commune_name=instance, **technology_data)
 
-            return instance
+        return instance
 
     

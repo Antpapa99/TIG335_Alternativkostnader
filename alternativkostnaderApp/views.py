@@ -6,6 +6,7 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -20,7 +21,7 @@ class CommuneList(APIView):
     """
     Retrieve, update or delete a snippet instance.
     """
-
+    
     def get(self, request, format=None):
         commune = Commune.objects.all()
         serializer = CommuneSerializer(commune, many=True)
