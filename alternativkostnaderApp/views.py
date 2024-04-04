@@ -62,7 +62,7 @@ class CommuneDetail(APIView):
 class TechDetail(APIView):
     def get_tech(self, commune_id, tech_name):
         try:
-            return Technology.objects.get(tech_name=tech_name, commune_name=commune_id)
+            return Technology.objects.get(tech_name=tech_name, commune_name=commune_id,)
         except Technology.DoesNotExist:
             raise Http404
     

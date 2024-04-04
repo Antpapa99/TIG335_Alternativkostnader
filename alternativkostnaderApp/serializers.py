@@ -33,28 +33,25 @@ class CommuneSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         technologies_data = validated_data.pop('technologies')
 
-        print(technologies_data)
+        existing_technologies = instance.technologies.all()
+        existing_techs_names = set(tech.tech_name for tech in existing_technologies)
 
-        #This here is the variable for technologies
-        techs = (instance.technologies).all()
-        techs = list(techs)
-        #This here is the variabel for the commune name of the specific instance
         instance.commune_name = validated_data.get('commune_name', instance.commune_name)
         instance.save()
 
-        #This is for each technology in the nested serializer
         for technology_data in technologies_data:
-            print(techs)
-            if len(techs) < 1:
-                technology = techs.pop(0)
-                technology.tech_name = technology_data.get('tech_name', technology.tech_name)
-                technology.Antal_installationer = technology_data.get('Antal_installationer', technology.Antal_installationer)
-                technology.Mojliga_installationer = technology_data.get('Mojliga_installationer', technology.Mojliga_installationer)
-                technology.Kostnad_per_installation = technology_data.get('Kostnad_per_installation', technology.Kostnad_per_installation)
-                technology.Arlig_besparing_per_installation_SEK = technology_data.get('Arlig_besparing_per_installation_SEK', technology.Arlig_besparing_per_installation_SEK)
-                technology.Arlig_besparing_per_installation_HTE = technology_data.get('Arlig_besparing_per_installation_HTE', technology.Arlig_besparing_per_installation_HTE)
-                technology.save()
+            tech_name = technology_data.get('tech_name')
+
+            if tech_name in existing_techs_names:
+            # If a technology with the same name exists, update it
+                technology = next(tech for tech in existing_technologies if tech.tech_name == tech_name)
+                for attr, value in technology_data.items():
+                    setattr(technology, attr, value)
+                    technology.save()
             else:
+            # Otherwise, create a new technology
                 Technology.objects.create(commune_name=instance, **technology_data)
-        return instance 
+
+            return instance
+
     
