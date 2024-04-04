@@ -1,40 +1,44 @@
-const url = 'http://127.0.0.1:8000/commune/15/21';
-function fetchTechnologyData() {
-    fetch(url, options).then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error ${response.status}`);
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM Content Loaded");
+
+    // Call fetchCommuneData when the DOM content is loaded
+    fetchCommuneData();
+
+    // Add an event listener to the select element to trigger the fetchCommuneId function when a municipality is selected
+    document.getElementById("kommunid").addEventListener("change", function() {
+        const communeName = this.value;
+        if (communeName) {
+            fetchCommuneData(communeName);
+        } else {
+            console.error("No municipality selected.");
         }
-        return response.json();
-      })
-      .then(updatedData => {
-        console.log('Data updated:', updatedData);
-      })
-      .catch(error => {
-        console.error('Error updating data:', error);
-      });
-};
+    });
+});
 
+function fetchCommuneData(communeName = null) {
+    const endpoint = `http://127.0.0.1:8000/commune/`;
 
-
-const dataToUpdate = {
-    "tech_id": 21,
-    "tech_name": "Technology",
-    "Antal_installationer": 21,
-    "Mojliga_installationer": 21,
-    "Kostnad_per_installation":21,
-    "Arlig_besparing_per_installation_SEK": 21,
-    "Arlig_besparing_per_installation_HTE": 21
+    fetch(endpoint)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch commune data from the API");
+            }
+            return response.json();
+        })
+        .then(communeData => {
+            // If a specific commune name is provided, log its corresponding endpoint URL
+            if (communeName) {
+                const commune = communeData.find(commune => commune.commune_name === communeName);
+                if (commune) {
+                    const url = `${endpoint}${commune.id}`;
+                    console.log("Endpoint URL:", url);
+                } else {
+                    console.error("Selected municipality not found.");
+                }
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching commune data:", error);
+        });
 }
 
-const jsonString = JSON.stringify(dataToUpdate);
-
-
-const options = {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: jsonString
-  };
-
-  fetchTechnologyData()

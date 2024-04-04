@@ -7,6 +7,7 @@ class TechnologySerializer(serializers.ModelSerializer):
         model = Technology
         fields = ['id', 'tech_name', 'Antal_installationer', 'Mojliga_installationer', 'Kostnad_per_installation', 
                   'Arlig_besparing_per_installation_SEK', 'Arlig_besparing_per_installation_HTE']
+                  
 
 
 
@@ -16,6 +17,7 @@ class CommuneSerializer(serializers.ModelSerializer):
     class Meta:
         model = Commune
         fields = ['id', 'commune_name', 'technologies']
+    
 
     #This function allows us to create a new object which has a nested object
     def create(self, validated_data):
