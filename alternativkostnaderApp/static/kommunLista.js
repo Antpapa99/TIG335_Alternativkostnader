@@ -306,3 +306,5 @@ function populateDropdown(kommuner) {
 document.addEventListener("DOMContentLoaded", function() {
     populateDropdown(kommuner);
 });
+
+
