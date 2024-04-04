@@ -34,29 +34,55 @@ class CommuneList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CommuneDetail(APIView):
-    def get_Commune(self, pk):
+    def get_Commune(self, commune_id):
         try:
-            return Commune.objects.get(pk=pk)
+            return Commune.objects.get(pk=commune_id)
         except Commune.DoesNotExist:
             raise Http404
     
-    def get(self, request, pk, format=None):
-        commune = self.get_Commune(pk)
+    def get(self, request, commune_id, format=None):
+        commune = self.get_Commune(commune_id)
         serializer = CommuneSerializer(commune)
         return Response(serializer.data)
         
     
-    def put(self, request, pk, format=None):
-        commune = self.get_Commune(pk)
+    def put(self, request, commune_id, format=None):
+        commune = self.get_Commune(commune_id)
         serializer = CommuneSerializer(commune, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, pk, format=None):
-        commune = self.get_Commune(pk)
+    def delete(self, request, commune_id, format=None):
+        commune = self.get_Commune(commune_id)
         commune.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class TechDetail(APIView):
+    def get_tech(self, commune_id, tech_name):
+        try:
+            return Technology.objects.get(tech_name=tech_name, commune_name=commune_id)
+        except Technology.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, commune_id, tech_name, format=None):
+        technology = self.get_tech(commune_id, tech_name)  # Pass both commune_id and tech_name
+        serializer = TechnologySerializer(technology)
+        return Response(serializer.data)
+        
+    
+    def put(self, request, commune_id, tech_name, format=None):
+        technology = self.get_tech(commune_id, tech_name)
+        serializer = TechnologySerializer(technology, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, commune_id, tech_name, format=None):
+        technology = self.get_Commune(commune_id, tech_name)
+        technology.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 

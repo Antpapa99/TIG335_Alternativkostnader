@@ -44,6 +44,7 @@ class CommuneSerializer(serializers.ModelSerializer):
 
         #This is for each technology in the nested serializer
         for technology_data in technologies_data:
+            print(techs)
             if len(techs) < 1:
                 technology = techs.pop(0)
                 technology.tech_name = technology_data.get('tech_name', technology.tech_name)
