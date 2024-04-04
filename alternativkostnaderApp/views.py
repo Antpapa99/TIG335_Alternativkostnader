@@ -29,9 +29,9 @@ def commune_list(request):
         return Response(serializer.data, status = status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def commune_detail(request, id):
+def commune_detail(request, commune_id):
     try:
-        commune = Commune.objects.get(pk=id)
+        commune = Commune.objects.get(pk=commune_id)
     except Commune.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
@@ -45,6 +45,25 @@ def commune_detail(request, id):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         commune.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def tech_detail(request, commune_id, tech_id):
+    try:
+        technology = Technology.objects.get(pk=tech_id)
+    except Technology.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = TechnologySerializer(technology)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = TechnologySerializer(technology, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        technology.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
