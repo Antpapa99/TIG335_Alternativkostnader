@@ -1,43 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM Content Loaded");
-    
-    document.getElementById("submitbutton").addEventListener("click", function() {
-        fetchCommuneData();
-    });
+
+    document.getElementById("submitbutton").addEventListener("click", fetchCommuneData);
 });
 
-function fetchCommuneData() {
-    fetch("http://127.0.0.1:8000/commune/")
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch commune data from the API");
-            }
-            return response.json();
-        })
-        .then(communeData => {
-            const communeIdMap = createCommuneIdMap(communeData);
-            const communeId = getCommuneIdFromMap(communeIdMap);
+async function fetchCommuneData() {
+    try {
+        const response = await fetch("http://127.0.0.1:8000/commune/");
+        if (!response.ok) throw new Error("Failed to fetch commune data from the API");
+        
+        const communeData = await response.json();
+        const communeIdMap = createCommuneIdMap(communeData);
+        const communeId = getCommuneIdFromMap(communeIdMap);
 
-            const data = prepareData(communeId);
-
-            sendData(data);
-        })
-        .catch(error => {
-            console.error("Error fetching commune data:", error);
-        });
+        const data = prepareData(communeId);
+        sendData(data);
+    } catch (error) {
+        console.error("Error fetching commune data:", error);
+    }
 }
 
 function createCommuneIdMap(communeData) {
-    const communeIdMap = {};
-    communeData.forEach(commune => {
-        communeIdMap[commune.commune_name] = commune.id;
-    });
-    return communeIdMap;
+    return communeData.reduce((acc, commune) => {
+        acc[commune.commune_name] = commune.id;
+        return acc;
+    }, {});
 }
 
 function getCommuneIdFromMap(communeIdMap) {
-    const kommun = document.getElementById("kommunid").value;
-    return communeIdMap[kommun];
+    return communeIdMap[document.getElementById("kommunid").value];
 }
 
 // This function returns the data in json format
@@ -77,6 +68,8 @@ function sendData(data) {
         url += `${data.id}`;
         method = "PUT";
     }
+
+    
 
     console.log(url);
 

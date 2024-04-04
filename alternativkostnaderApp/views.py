@@ -48,9 +48,9 @@ def commune_detail(request, commune_id):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def tech_detail(request, commune_id, tech_id):
+def tech_detail(request, commune_id, tech_name):
     try:
-        technology = Technology.objects.get(pk=tech_id)
+        technology = Technology.objects.get(tech_name=tech_name, commune_name = commune_id)
     except Technology.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
