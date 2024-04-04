@@ -19,66 +19,54 @@
 
         <article id="kommunchoice">
             <label for="kommunid">Välj din kommun</label>
-
             <select name="Kommun" id="kommunid">
                 <option value="">Klicka för att välja din kommun</option>
             </select>
             <script src="../static/kommunLista.js"></script>
         </article>
 
-        <article id="teknikchoice">
-            <label for="teknikid">Välj teknik</label>
+        <table id="tekniktable">
+            <thead>
+                <tr>
+                    <th>Välfärdsteknik</th>
+                    <th>Antal installationer</th>
+                    <th>Antal möjliga installationer</th>
+                    <th>Kostnad per installation</th>
+                    <th>Årlig besparing per installation (sek/år)</th>
+                    <th>Årlig besparing per installation (HTE/år)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select name="teknik" class="teknikselect">
+                            <option value="">Välj teknik</option>
+                            <option value="lås">Digitala lås</option>
+                            <option value="tilld">Digital tillsyn (dag)</option>
+                            <option value="tilln">Digital tillsyn (natt)</option>
+                            <option value="robot">Läkemedelsrobot</option>
+                            <option value="larmgps">Digitalt larm (GPS)</option>
+                            <option value="larmtrygg">Digitalt larm (trygghet)</option>
+                            <option value="larmfall">Fallprevention</option>
+                        </select>
+                    </td>
+                    <td><input type="text" class="installationer"></td>
+                    <td><input type="text" class="minstallationer"></td>
+                    <td><input type="text" class="kinstallation"></td>
+                    <td><input type="text" class="binstallationsek"></td>
+                    <td><input type="text" class="binstallationHTE"></td>
+                </tr>
+            </tbody>
+        </table>
 
-            <select name="teknik" id="teknikid">
-                <option value="">Klicka för att välja teknik</option>
-                <option value="lås">Digitala lås</option>
-                <option value="tilld">Digital tillsyn (dag)</option>
-                <option value="tilln">Digital tillsyn (natt)</option>
-                <option value="robot">Läkemedelsrobot</option>
-                <option value="larmgps">Digitalt larm (GPS)</option>
-                <option value="larmtrygg">Digitalt larm (trygghet)</option>
-                <option value="larmfall">Fallprevention</option>
-            </select>
-        </article>
+        <button type="button" id="addRowButton">
+            Lägg till teknik
+        </button>
 
-        <article id="inputfield">
-            <div>
-                <label for="installationer">Antal installationer</label>
-                <input type="text" id="installationer"></input>
-                <br>
-            </div>
-
-            <div>
-                <label for="minstallationer">Antal möjliga installationer</label>
-                <input type="text" id="minstallationer"></input>
-                <br>
-            </div>
-
-            <div>
-                <label for="kinstallation">Kostnad per installation</label>
-                <input type="text" id="kinstallation"></input>
-                <br>
-            </div>
-
-            <div>
-                <label for="binstallationsek">Årlig besparing per installation (sek/år)</label>
-                <input type="text" id="binstallationsek"></input>
-                <br>
-            </div>
-
-            <div>
-                <label for="inputlarmgps">Årlig besparing per installation (HTE/år)</label>
-                <input type="text" id="binstallationHTE"></input>
-                <br>
-            </div>
-
-            <button type=button id="submitbutton">
-                Skicka in data
-            </button>
-            
-        </article>
+        <button type="button" id="submitbutton">
+            Skicka in data
+        </button>
         
-
         <button type="button" id="nextbutton">
             <a href="verktyg.html">Gå till verktyget</a>
         </button>
@@ -92,5 +80,33 @@
         </footer>
     </main>
     <script src="../static/inputdata.js"></script>
+    <script>
+        document.getElementById('addRowButton').addEventListener('click', function() {
+            var table = document.getElementById('tekniktable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cells = [];
+            for (var i = 0; i < 6; i++) {
+                cells.push(newRow.insertCell(i));
+                if (i === 0) {
+                    var select = document.createElement('select');
+                    select.name = 'teknik';
+                    select.classList.add('teknikselect');
+                    var options = ['Välj teknik', 'Digitala lås', 'Digital tillsyn (dag)', 'Digital tillsyn (natt)', 'Läkemedelsrobot', 'Digitalt larm (GPS)', 'Digitalt larm (trygghet)', 'Fallprevention'];
+                    options.forEach(function(optionText) {
+                        var option = document.createElement('option');
+                        option.value = optionText.toLowerCase().replace(/\s+/g, '');
+                        option.textContent = optionText;
+                        select.appendChild(option);
+                    });
+                    cells[i].appendChild(select);
+                } else {
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                    input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek', 'binstallationHTE'][i - 1]);
+                    cells[i].appendChild(input);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
