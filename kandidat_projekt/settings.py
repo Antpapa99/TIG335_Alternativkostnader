@@ -57,7 +57,7 @@ ROOT_URLCONF = 'kandidat_projekt.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ 'alternativkostnaderApp/templates', 'alternativkostnaderApp/static', ],
+        'DIRS': [ 'alternativkostnaderApp/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,7 +124,7 @@ USE_TZ = True
 
 # This setting informs Django of the URI path from which your static files will be served to users
 # Here, they well be accessible at your-domain.onrender.com/static/... or yourcustomdomain.com/static/...
-STATIC_URL = '/alternativkostnaderApp/static/'
+STATIC_URL = '/static/'
 
 
 
