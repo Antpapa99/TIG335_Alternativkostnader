@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'kandidat_projekt.wsgi.application'
 import os
 
 if DEBUG:
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('postgres://mydatabase_57tl_user:Om6JuM4auM0wsnhiso6yPWje2ocTu6i8@dpg-co7v2d4f7o1s738n9ed0-a.frankfurt-postgres.render.com/mydatabase_57tl'))}
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     DATABASES = {
         'default': {
