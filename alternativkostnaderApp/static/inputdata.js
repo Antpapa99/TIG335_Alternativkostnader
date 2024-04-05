@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function fetchCommuneData() {
     try {
-        const response = await fetch("https://tig335-alternativkostnader.onrender.com/commune/");
+        const response = await fetch("http://127.0.0.1:8000/commune/");
         if (!response.ok) throw new Error("Failed to fetch commune data from the API");
         
         const communeData = await response.json();
@@ -73,7 +73,7 @@ const csrftoken = getCookie('csrftoken');
 function sendData(data) {
     console.log(JSON.stringify(data));
 
-    let url = "https://tig335-alternativkostnader.onrender.com/commune/";
+    let url = "http://127.0.0.1:8000/commune/";
     let method = "POST"; // Default method is POST
 
     if (data.id) {
@@ -101,10 +101,12 @@ function sendData(data) {
         return response.json();
     })
     .then(responseData => {
+        alert("The data has now been submitted sucessfully")
         console.log("Data sent successfully:", responseData);
         // Handle success response here
     })
     .catch(error => {
+        alert("You need to select a technology or submit a number")
         console.error("Error sending data:", error);
         // Handle error here
     });
