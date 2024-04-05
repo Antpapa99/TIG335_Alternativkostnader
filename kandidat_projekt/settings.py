@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'kandidat_projekt.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 import os
-
+# om ni har ett problem med databas koppling i local mode bara sätt en not sats här
 if DEBUG:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
