@@ -1,0 +1,179 @@
+.body {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 0.3fr 1fr 1fr 1fr 1fr 0.5fr; 
+
+}
+
+.footersect {
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top: auto;
+    grid-area: 7/1/8/8;
+}
+
+.navbar {
+    background-color: black;
+    grid-area: 1/1/2/8;
+    max-height: 100px;
+}
+a:link, a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+/* Stilar för index.html */
+
+#textbody {
+    text-align: center;
+    grid-area: 2/1/7/8;
+    overflow-x: auto;
+}
+
+#titletext {
+    font-size: 2.3em;
+    padding-bottom: 40px;
+    font-weight: 600;
+}
+
+#textbes {
+    font-size: 1.2em;
+}
+
+#bild1 {
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+
+#gruppnamn {
+    color: white;
+    display: inline;
+    font-weight: 800;
+    margin: 10px;
+}
+
+.nextbutton {
+    width: 230px;
+    height: 60px;
+    font-size: 1.3em;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+/* Stilar för data.html */
+
+#datatitle {
+    text-align: center;
+    grid-area: 2/3/3/6;
+}
+
+#kommunchoice {
+    text-align: left;
+    margin-top: auto;
+}
+
+#tekniktable {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse; /* Slå ihop gränserna mellan celler */
+    width: 100%; /* Fyll ut tabellen tillgängligt utrymme */
+}
+
+#tekniktable th,
+#tekniktable td {
+    padding: 10px; /* Lägg till padding för att öka avståndet runt texten i cellerna */
+    border: 1px solid black; /* Lägg till gränser runt cellerna */
+}
+
+#addRowButton {
+    width: 120px;
+    height: 30px;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#submitbutton {
+    width: 120px;
+    height: 30px;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+
+#inputfield label {
+    margin-bottom: 10px; /* Öka avståndet mellan etiketterna */
+}
+
+#kommunchoice {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 20px; /* Lägg till luft under artikeln */
+}
+
+#kommunid {
+    width: 300px;
+    height: 30px;
+    margin-top: 10px; /* Lägg till luft över select-elementet */
+}
+
+#kommunid option {
+    color: #333; /* Ange färg på option-elementen */
+}
+
+#kommunchoice label {
+    font-weight: bold;
+    margin-bottom: 10px; /* Lägg till luft under label-elementet */
+}
+
+
+#tekniktablediv {
+    grid-area: 2/1/7/8;
+    text-align: center;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    padding: 5px;
+}
+
+#instruktioner {
+    display: inline-block;
+    text-align: left;
+}
+
+.tooltip {
+    padding: 2px 5px;
+    color: rgb(20, 20, 185);
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 100%;
+    margin-left: 5px;
+}
