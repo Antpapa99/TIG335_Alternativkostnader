@@ -1,12 +1,11 @@
 function addRow() {
     // Check if the maximum limit of rows has been reached
-    if (document.getElementById('tekniktable').getElementsByTagName('tbody')[0].rows.length >= 7) {
+    let table = document.getElementById('tekniktable').getElementsByTagName('tbody')[0];
+    if (table.rows.length >= 7) {
         alert("Maximum limit of rows reached (7 rows).");
         return; // Exit the function if the limit is reached
     }
 
-    let table = document.getElementById('tekniktable').getElementsByTagName('tbody')[0];
-    table = 7;
     let newRow = table.insertRow(table.rows.length);
     let cells = [];
 
@@ -31,6 +30,7 @@ function addRow() {
             input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek', 'binstallationHTE'][i - 1]);
             cells[i].appendChild(input);
         }
-    } }
+    }
+}
 
 document.getElementById('addRowButton').addEventListener('click', addRow);
