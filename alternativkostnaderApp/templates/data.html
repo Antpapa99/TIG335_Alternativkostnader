@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href=../static/style.css>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body class="body">
     <main class="main">
@@ -45,9 +45,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr id="row1">
                         <td>
-                            <select name="teknik" class="teknikselect">
+                            <select name="teknik" class="teknikselect" data-row="1">
                                 <option value="">Välj teknik</option>
                                 <option value="lås">Digitala lås</option>
                                 <option value="tilld">Digital tillsyn (dag)</option>
@@ -58,16 +58,15 @@
                                 <option value="larmfall">Fallprevention</option>
                             </select>
                         </td>
-                        <td><input type="text" class="installationer"></td>
-                        <td><input type="text" class="minstallationer"></td>
-                        <td><input type="text" class="kinstallation"></td>
-                        <td><input type="text" class="binstallationsek"></td>
-                        <td><input type="text" class="binstallationHTE"></td>
+                        <td><input type="text" class="installationer" data-row="1"></td>
+                        <td><input type="text" class="minstallationer" data-row="1"></td>
+                        <td><input type="text" class="kinstallation" data-row="1"></td>
+                        <td><input type="text" class="binstallationsek" data-row="1"></td>
+                        <td><input type="text" class="binstallationHTE" data-row="1"></td>
                     </tr>
                 </tbody>
             </table>
         
-
 
             <button type="button" id="addRowButton">
                 Lägg till teknik
@@ -97,6 +96,5 @@
     </main>
     <script src="../static/inputdata.js"></script>
     <script src="../static/addRows.js"></script>
-    </script>
 </body>
 </html>

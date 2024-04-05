@@ -31,29 +31,34 @@ function getCommuneIdFromMap(communeIdMap) {
     return communeIdMap[document.getElementById("kommunid").value];
 }
 
-// This function returns the data in json format
 function prepareData(communeId) {
     const kommun = document.getElementById("kommunid").value;
-    const teknik = document.querySelector(".teknikselect").value;
-    const installationer = document.querySelector(".installationer").value;
-    const minstallationer = document.querySelector(".minstallationer").value;
-    const kinstallation = document.querySelector(".kinstallation").value;
-    const binstallationsek = document.querySelector(".binstallationsek").value;
-    const binstallationHTE = document.querySelector(".binstallationHTE").value;
+    const rows = document.querySelectorAll("#tekniktable tbody tr");
+
+    const technologies = [];
+
+    rows.forEach(row => {
+        const teknik = row.querySelector(".teknikselect").value;
+        const installationer = row.querySelector(".installationer").value;
+        const minstallationer = row.querySelector(".minstallationer").value;
+        const kinstallation = row.querySelector(".kinstallation").value;
+        const binstallationsek = row.querySelector(".binstallationsek").value;
+        const binstallationHTE = row.querySelector(".binstallationHTE").value;
+
+        technologies.push({
+            "tech_name": teknik,
+            "Antal_installationer": parseInt(installationer),
+            "Mojliga_installationer": parseInt(minstallationer),
+            "Kostnad_per_installation": parseFloat(kinstallation),
+            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek),
+            "Arlig_besparing_per_installation_HTE": parseInt(binstallationHTE)
+        });
+    });
 
     return {
         "id": communeId,
         "commune_name": kommun,
-        "technologies": [
-            {
-                "tech_name": teknik,
-                "Antal_installationer": parseInt(installationer),
-                "Mojliga_installationer": parseInt(minstallationer),
-                "Kostnad_per_installation": parseFloat(kinstallation),
-                "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek),
-                "Arlig_besparing_per_installation_HTE": parseInt(binstallationHTE)
-            }
-        ]
+        "technologies": technologies
     };
 }
 
@@ -76,8 +81,6 @@ function sendData(data) {
         url += `${data.id}`;
         method = "PUT";
     }
-
-    
 
     console.log(url);
 
@@ -105,4 +108,4 @@ function sendData(data) {
         console.error("Error sending data:", error);
         // Handle error here
     });
-}
+} 
