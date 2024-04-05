@@ -13,9 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import environ
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'kandidat_projekt.wsgi.application'
 
 import os
 # om ni har ett problem med databas koppling i local mode bara sätt en not sats här
-if DEBUG:
+if not DEBUG:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     DATABASES = {
@@ -131,19 +131,25 @@ STATIC_URL = '/static/'
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
 
-    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+# Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+
+#This tells app to know where to access the static files
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'alternativkostnaderApp/static')]
 
 
 
 
-    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
-    # and renames the files with unique names for each version to support long-term caching
+# Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
+# and renames the files with unique names for each version to support long-term caching
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
