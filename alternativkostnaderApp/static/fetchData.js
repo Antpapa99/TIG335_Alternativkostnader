@@ -14,7 +14,7 @@ fetch(apiUrl)
   })
   .then(communeData => {
     // Process the retrieved user data
-    console.log('Commune Data:', communeData);
+    console.log('Commune Data:', communeData["id"]);
   })
   .catch(error => {
     console.error('Error:', error);
@@ -49,6 +49,15 @@ function getDetailCommuneData() {
 
 console.log(getDetailCommuneData())
 
+
+//mapping out commune name and commune id
+
+
+
+
+
+
+
 //PUT call on commune
 
 function putCommune() {
@@ -66,9 +75,17 @@ const formData = {
     "id": 30,
     "commune_name": "Mölndals stad",
     "technologies": [
-    {"tech_name": "PutTech",
+    
+    {"tech_name": "Newtech3",
     "Antal_installationer": 200,
     "Mojliga_installationer": 1,
+    "Kostnad_per_installation": 1,
+    "Arlig_besparing_per_installation_SEK": 1,
+    "Arlig_besparing_per_installation_HTE": 1},
+    
+    {"tech_name": "NewTech1",
+    "Antal_installationer": 200,
+    "Mojliga_installationer": 111,
     "Kostnad_per_installation": 1,
     "Arlig_besparing_per_installation_SEK": 1,
     "Arlig_besparing_per_installation_HTE": 1}
@@ -102,4 +119,4 @@ fetch(apiUrl, {
   });
 }
 
-putCommune();
+//putCommune();
