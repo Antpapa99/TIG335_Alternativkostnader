@@ -12,8 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request):
     return render(request, 'index.html')
 
-def verktyg(request):
-    return render(request, 'verktyg.html')
+def datainputpage(request):
+    return render(request, 'data.html')
 
 #Simple API call to get a list of communes in json or be able to add new objects with a direct API input
 

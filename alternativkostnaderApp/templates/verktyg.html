@@ -1,77 +1,19 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" type="text/css" href=style.css>
 </head>
-<body id="body">
-    <header></header>
-    <main id="datamain">
-        <article id="navbar">
-            <img id="bild2" src="../static/SCDIlogo.png">
+<body class="body">
+    <main class="main">
+        <header class="navbar">
+            <img id="bild2" src="SCDIlogo.png">
             <p id="gruppnamn">Data Men Inc.</p>
-        </article>
-
-        <h1 id="datatitle">Ange din data!</h1>
-
-        <article id="kommunchoice">
-            <label for="kommunid">Välj din kommun</label>
-            <select name="Kommun" id="kommunid">
-                <option value="">Klicka för att välja din kommun</option>
-            </select>
-            <script src="../static/kommunLista.js"></script>
-        </article>
-
-        <table id="tekniktable">
-            <thead>
-                <tr>
-                    <th>Välfärdsteknik</th>
-                    <th>Antal installationer</th>
-                    <th>Antal möjliga installationer</th>
-                    <th>Kostnad per installation</th>
-                    <th>Årlig besparing per installation (sek/år)</th>
-                    <th>Årlig besparing per installation (HTE/år)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <select name="teknik" class="teknikselect">
-                            <option value="">Välj teknik</option>
-                            <option value="lås">Digitala lås</option>
-                            <option value="tilld">Digital tillsyn (dag)</option>
-                            <option value="tilln">Digital tillsyn (natt)</option>
-                            <option value="robot">Läkemedelsrobot</option>
-                            <option value="larmgps">Digitalt larm (GPS)</option>
-                            <option value="larmtrygg">Digitalt larm (trygghet)</option>
-                            <option value="larmfall">Fallprevention</option>
-                        </select>
-                    </td>
-                    <td><input type="text" class="installationer"></td>
-                    <td><input type="text" class="minstallationer"></td>
-                    <td><input type="text" class="kinstallation"></td>
-                    <td><input type="text" class="binstallationsek"></td>
-                    <td><input type="text" class="binstallationHTE"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <button type="button" id="addRowButton">
-            Lägg till teknik
-        </button>
-
-        <button type="button" id="submitbutton">
-            Skicka in data
-        </button>
-        
-        <button type="button" id="nextbutton">
-            <a href="verktyg.html">Gå till verktyget</a>
-        </button>
-
-        <footer id="footersect">
+        </header>
+    
+        <footer class="footersect">
             <p>
                 Data Men, SCDI
                 <br> 
@@ -79,7 +21,5 @@
             </p>
         </footer>
     </main>
-    <script src="../static/inputdata.js"></script>
-    <script src="../static/addRows.js"></script>
 </body>
 </html>

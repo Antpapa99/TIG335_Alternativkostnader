@@ -1,43 +1,45 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href=../static/style.css>
 </head>
-<body>
-    <header></header>
-    <main id="indexmain">
-        <article id="textbody">
-        <h1 id="titletext">Om Verktyget</h1>
-        <img id="bild1" src="{% static 'alternativkostnad.webp' %}" alt="Bild på X">
-        <p id="textbes">
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br><br><br>
+<body class="body">
+    <main class="main">
+            <header class="navbar">
+                <img id="bild2" src="SCDIlogo.png">
+                <p id="gruppnamn">Data Men Inc.</p>
+            </header>
 
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br><br><br>
+            <div id="textbody">
+                <h1 id="titletext">Om Verktyget</h1>
+                <img id="bild1" src="../static/alternativkostnad.webp" alt="Bild pÃ¥ X">
+                <p id="textbes">
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br><br><br>
 
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
-            placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening
-        </p>
-        <button id="nextbutton">
-            <a href="/verktyg">Gå till verktyget</a>
-        </button>
-        </article>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br><br><br>
 
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening<br>
+                    placeholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermeningplaceholdermening
+                </p>
+                <button class="nextbutton">
+                    <a href="data">Till datahantering</a>
+                </button>
+            </div>
+        <footer class="footersect">
+            <p>
+                Data Men, SCDI
+                <br> 
+                2024
+            </p>
+        </footer>
     </main>
-    <footer id="footersect">
-        <p>
-            Data Men, SCDI
-            <br> 
-            2024
-        </p>
-    </footer>
 </body>
 </html>
