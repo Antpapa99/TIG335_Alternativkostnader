@@ -6,19 +6,17 @@ function addRow() {
     }
 
     let table = document.getElementById('tekniktable').getElementsByTagName('tbody')[0];
+    table = 7;
     let newRow = table.insertRow(table.rows.length);
     let cells = [];
 
-    for (var i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
         cells.push(newRow.insertCell(i));
         if (i === 0) {
             let select = document.createElement('select');
             select.name = 'teknik';
             select.classList.add('teknikselect');
             let options = ['Välj teknik', 'Digitala lås', 'Digital tillsyn (dag)', 'Digital tillsyn (natt)', 'Läkemedelsrobot', 'Digitalt larm (GPS)', 'Digitalt larm (trygghet)', 'Fallprevention'];
-
-            // Filter out already selected options
-            options = options.filter(optionText => !selectedTechnologies.includes(optionText.toLowerCase().replace(/\s+/g, '')));
 
             options.forEach(function(optionText) {
                 let option = document.createElement('option');
@@ -33,20 +31,6 @@ function addRow() {
             input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek', 'binstallationHTE'][i - 1]);
             cells[i].appendChild(input);
         }
-    }
-
-    // Event listener for technology selection
-    newRow.querySelector('.teknikselect').addEventListener('change', function() {
-        let selectedTech = this.value;
-        // Check if the selected technology is already present in the list
-        if (selectedTechnologies.includes(selectedTech)) {
-            alert("This technology has already been selected in another row.");
-            this.value = ''; // Clear the selection
-        } else {
-            // Update the list of selected technologies
-            selectedTechnologies.push(selectedTech);
-        }
-    });
-}
+    } }
 
 document.getElementById('addRowButton').addEventListener('click', addRow);

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=../static/style.css>
+</head>
+<body class="body">
+    <main class="main">
+        <header class="navbar">
+            <img id="bild2" src="SCDIlogo.png">
+            <p id="gruppnamn">Data Men Inc.</p>
+        </header>
+
+        <div id="tekniktablediv">
+            <h1 id="datatitle">Ange din data!</h1>
+            
+            <h3>Instruktioner</h3>
+            <div id="instruktioner">
+            <p>1. Ange den kommun som du ska ange data för i drop-down menyn ovanför tablån</p>
+            <p>2. Välj en specifik teknik i tablåns första kolumn, mata sedan in relevanta fält</p>
+            <p>3. Klicka på "Lägg till teknik"-knappen för att få upp en ny blank rad där du kan ange värden för en ytterligare teknik</p>
+            <p>4. När du är färdig med att mata in din data klickar du på "Skicka in data"-knappen så att det lagras i vår databas</p>
+            <p>5. Du väljer sedan ett av verktygen för att ta del av visuella representationer och jämförelser av din data</p>
+            <p>TIPS: För ytterligare information om våra parametrar kan du göra en mouse-over på tooltipsen!</p>
+            </div>
+            <article id="kommunchoice">
+                <label for="kommunid">Välj din kommun</label>
+                <select name="Kommun" id="kommunid">
+                    <option value="">Klicka för att välja din kommun</option>
+                </select>
+                <script src="../static/kommunLista.js"></script>
+            </article>
+
+            <table id="tekniktable">
+                <thead>
+                    <tr>
+                        <th>Välfärdsteknik</th>
+                        <th>Antal installationer<span class="tooltip" title="Beskrivande text, info om antal installationer, mmBeskrivande text, info om antal installationer, mm Beskrivande text, info om antal installationer, mm">?</span></th>
+                        <th>Antal möjliga installationer<span class="tooltip">?</span></th>
+                        <th>Kostnad per installation<span class="tooltip">?</span></th>
+                        <th>Årlig besparing per installation (sek/år)<span class="tooltip">?</span></th>
+                        <th>Årlig besparing per installation (HTE/år)<span class="tooltip">?</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <select name="teknik" class="teknikselect">
+                                <option value="">Välj teknik</option>
+                                <option value="lås">Digitala lås</option>
+                                <option value="tilld">Digital tillsyn (dag)</option>
+                                <option value="tilln">Digital tillsyn (natt)</option>
+                                <option value="robot">Läkemedelsrobot</option>
+                                <option value="larmgps">Digitalt larm (GPS)</option>
+                                <option value="larmtrygg">Digitalt larm (trygghet)</option>
+                                <option value="larmfall">Fallprevention</option>
+                            </select>
+                        </td>
+                        <td><input type="text" class="installationer"></td>
+                        <td><input type="text" class="minstallationer"></td>
+                        <td><input type="text" class="kinstallation"></td>
+                        <td><input type="text" class="binstallationsek"></td>
+                        <td><input type="text" class="binstallationHTE"></td>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+
+            <button type="button" id="addRowButton">
+                Lägg till teknik
+            </button>
+
+            <button type="button" id="submitbutton">
+                Skicka in data
+            </button>
+
+                   
+            <button type="button" class="nextbutton">
+                <a href="verktyg.html">Gå till verktyg 1</a>
+            </button>
+
+            <button type="button" class="nextbutton">
+                <a href="verktyg.html">Gå till verktyg 2</a>
+            </button>
+        </div>
+
+        <footer class="footersect">
+            <p>
+                Data Men, SCDI
+                <br> 
+                2024
+            </p>
+        </footer>
+    </main>
+    <script src="../static/inputdata.js"></script>
+    <script src="../static/addRows.js"></script>
+    </script>
+</body>
+</html>
