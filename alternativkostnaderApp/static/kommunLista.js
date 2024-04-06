@@ -295,10 +295,10 @@ function populateDropdown(kommuner) {
   let dropdown = document.getElementById("kommunid");
 
   kommuner.forEach(function(kommun) {
-    let option = document.createElement("option");
-    option.text = kommun // Replace spaces with underscores
-    option.value = kommun.replace(/ /g, "_"); // Replace spaces with underscores
-    dropdown.appendChild(option);
+      let option = document.createElement("option");
+      option.text = kommun;
+      option.value = kommun;
+      dropdown.appendChild(option);
   });
 }
 

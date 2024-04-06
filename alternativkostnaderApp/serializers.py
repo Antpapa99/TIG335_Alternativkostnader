@@ -17,7 +17,7 @@ class CommuneSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Commune
-        fields = ['commune_name', 'technologies', 'id']
+        fields = ['id', 'commune_name', 'technologies']
 
     
 

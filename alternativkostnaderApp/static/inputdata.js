@@ -76,9 +76,9 @@ function sendData(data) {
     let url = "https://tig335-alternativkostnader.onrender.com/commune/";
     let method = "POST"; // Default method is POST
 
-    if (data.commune_name) {
-        console.log("Data ID:", data.commune_name);
-        url += `${data.commune_name}`;
+    if (data.id) {
+        console.log("Data ID:", data.id);
+        url += `${data.id}`;
         method = "PUT";
     }
 
