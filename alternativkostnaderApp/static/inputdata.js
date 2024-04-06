@@ -76,9 +76,9 @@ function sendData(data) {
     let url = "http://127.0.0.1:8000/commune/";
     let method = "POST"; // Default method is POST
 
-    if (data.id) {
-        console.log("Data ID:", data.id);
-        url += `${data.id}`;
+    if (data.commune_name) {
+        console.log("Data ID:", data.commune_name);
+        url += `${data.commune_name}`;
         method = "PUT";
     }
 
