@@ -288,7 +288,8 @@ const kommuner = [
   "Östhammars kommun",
   "Östra Göinge kommun",
   "Överkalix kommun",
-  "Övertorneå kommun"
+  "Övertorneå kommun",
+  "test"
 ];
 
 function populateDropdown(kommuner) {

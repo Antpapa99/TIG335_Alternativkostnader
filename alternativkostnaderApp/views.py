@@ -7,6 +7,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import redirect
 
 
 def home(request):
@@ -15,7 +16,6 @@ def home(request):
 def datainputpage(request):
     return render(request, 'data.html')
 
-#Simple API call to get a list of communes in json or be able to add new objects with a direct API input
 
 class CommuneList(APIView):
     """
@@ -45,7 +45,6 @@ class CommuneDetail(APIView):
         commune = self.get_Commune(commune_id)
         serializer = CommuneSerializer(commune)
         return Response(serializer.data)
-        
     
     def put(self, request, commune_id, format=None):
         commune = self.get_Commune(commune_id)
@@ -59,6 +58,14 @@ class CommuneDetail(APIView):
         commune = self.get_Commune(commune_id)
         commune.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class RedirectCommuneDetail(APIView):
+    def get(self, request, commune_name, format=None):
+        try:
+            commune = Commune.objects.get(commune_name=commune_name)
+            return redirect('commune_detail', commune_id=commune.id)
+        except Commune.DoesNotExist:
+            raise Http404
     
 class TechDetail(APIView):
     def get_tech(self, commune_id, tech_name):
