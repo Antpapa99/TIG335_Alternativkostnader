@@ -107,8 +107,13 @@ a:link, a:visited {
 
 .button-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
 }
+
 
 
 #addRowButton {
@@ -121,6 +126,7 @@ a:link, a:visited {
     border-radius: 15px;
     font-size: 0.8em;
     font-weight: bold;
+    grid-area: 1 / 4 / 2 / 5;
 }
 
 #deleteRowButton {
@@ -133,6 +139,7 @@ a:link, a:visited {
     border-radius: 15px;
     font-size: 0.8em;
     font-weight: bold;
+    grid-area: 1 / 6 / 2 / 7;
 }
 
 #submitbutton {
