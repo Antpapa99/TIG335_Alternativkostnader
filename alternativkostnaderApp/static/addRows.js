@@ -33,4 +33,15 @@ function addRow() {
     }
 }
 
+function myDeleteFunction() {
+    let table = document.getElementById("tekniktable").getElementsByTagName('tbody')[0];
+    let lastRowIndex = table.rows.length - 1;
+    if (lastRowIndex >= 0) {
+        table.deleteRow(lastRowIndex);
+    }
+}
+
+
 document.getElementById('addRowButton').addEventListener('click', addRow);
+
+document.getElementById("deleteRowButton").addEventListener('click', myDeleteFunction)
