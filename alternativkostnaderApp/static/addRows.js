@@ -33,6 +33,7 @@ function addRow() {
     }
 }
 
+// Allows you to delete a row
 function myDeleteFunction() {
     let table = document.getElementById("tekniktable").getElementsByTagName('tbody')[0];
     let lastRowIndex = table.rows.length - 1;

@@ -105,7 +105,25 @@ a:link, a:visited {
     border: 1px solid black; /* Lägg till gränser runt cellerna */
 }
 
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
 #addRowButton {
+    width: 120px;
+    height: 30px;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+#deleteRowButton {
     width: 120px;
     height: 30px;
     margin: 20px auto;
