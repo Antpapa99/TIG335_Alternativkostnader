@@ -293,7 +293,7 @@ const kommuner = [
 ];
 
 function populateDropdown(kommuner) {
-  let dropdown = document.getElementById("kommunid");
+  let dropdown = document.getElementById("kommunnamn");
 
   kommuner.forEach(function(kommun) {
       let option = document.createElement("option");

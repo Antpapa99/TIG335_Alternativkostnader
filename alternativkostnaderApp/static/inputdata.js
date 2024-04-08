@@ -6,33 +6,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function fetchCommuneData() {
     try {
-        const response = await fetch("http://127.0.0.1:8000/commune/");
-        if (!response.ok) throw new Error("Failed to fetch commune data from the API");
-        
-        const communeData = await response.json();
-        const communeIdMap = createCommuneIdMap(communeData);
-        const communeId = getCommuneIdFromMap(communeIdMap);
+        const communeName = document.getElementById("kommunnamn").value;
 
-        const data = prepareData(communeId);
-        sendData(data);
+        // Check if commune exists
+        const communeExists = await checkCommuneExistence(communeName);
+
+        if (communeExists) {
+            // If commune exists, prepare data and send a PUT request
+            const data = prepareData(communeName);
+            sendData(data, "PUT", `http://127.0.0.1:8000/commune/${communeName}`);
+        } else {
+            // If commune does not exist, prepare data and send a POST request
+            const data = prepareData(communeName);
+            sendData(data, "POST", "http://127.0.0.1:8000/commune/");
+        }
     } catch (error) {
         console.error("Error fetching commune data:", error);
     }
 }
 
-function createCommuneIdMap(communeData) {
-    return communeData.reduce((acc, commune) => {
-        acc[commune.commune_name] = commune.id;
-        return acc;
-    }, {});
+async function checkCommuneExistence(communeName) {
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/commune/${communeName}`);
+        return response.ok; // If the response is ok, commune exists
+    } catch (error) {
+        console.error("Error checking commune existence:", error);
+        return false; // Return false if an error occurs
+    }
 }
 
-function getCommuneIdFromMap(communeIdMap) {
-    return communeIdMap[document.getElementById("kommunid").value];
-}
 
-function prepareData(communeId) {
-    const kommun = document.getElementById("kommunid").value;
+function prepareData(communeName) {
+    const kommun = document.getElementById("kommunnamn").value;
     const rows = document.querySelectorAll("#tekniktable tbody tr");
 
     const technologies = [];
@@ -58,7 +63,7 @@ function prepareData(communeId) {
     });
 
     return {
-        "id": communeId,
+        "id": communeName,
         "commune_name": kommun,
         "technologies": technologies
     };
@@ -71,45 +76,28 @@ function getCookie(name) {
 
 const csrftoken = getCookie('csrftoken');
 
-// This function checks if the sent data updates or creates a new object and then decides which api endpoint to call
-function sendData(data) {
-    console.log(JSON.stringify(data));
+// This function checks if sends data
+async function sendData(data, method, url) {
+    try {
+        const response = await fetch(url, {
+            method: method,
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+                'X-CSRFToken': csrftoken,
+            }
+        });
 
-    let url = "http://127.0.0.1:8000/commune/";
-    let method = "POST"; // Default method is POST
-
-    if (data.id) {
-        console.log("Data ID:", data.id);
-        url += `${data.id}`;
-        method = "PUT";
-    }
-
-    console.log(url);
-
-    fetch(url, {
-        method: method,
-        body: JSON.stringify(data),
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            'X-CSRFToken': csrftoken,
-
-        }
-    })
-    .then(response => {
         if (!response.ok) {
-            console.log(url);
             throw new Error(`Network response was not ok, status: ${response.status}`);
         }
-        return response.json();
-    })
-    .then(responseData => {
-        alert("The data has now been submitted sucessfully")
+
+        const responseData = await response.json();
+        alert("The data has now been submitted successfully");
         console.log("Data sent successfully:", responseData);
-        // Handle success response here
-    })
-    .catch(error => {
-        alert("You need to select a technology or submit a number")
+    } catch (error) {
+        alert("Error sending data: " + error.message);
         console.error("Error sending data:", error);
-        // Handle error here
-    });
-} 
+    }
+}
+

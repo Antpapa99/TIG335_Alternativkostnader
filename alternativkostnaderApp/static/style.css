@@ -129,13 +129,13 @@ a:link, a:visited {
     margin-bottom: 20px; /* Lägg till luft under artikeln */
 }
 
-#kommunid {
+#kommunnamn {
     width: 300px;
     height: 30px;
     margin-top: 10px; /* Lägg till luft över select-elementet */
 }
 
-#kommunid option {
+#kommunnamn option {
     color: #333; /* Ange färg på option-elementen */
 }
 
