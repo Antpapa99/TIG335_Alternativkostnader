@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 async function fetchCommuneData() {
     try {
-        const response = await fetch("https://tig335-alternativkostnader.onrender.com/commune");
+        const response = await fetch("https://tig335-alternativkostnader.onrender.com/commune/");
         if (!response.ok) throw new Error("Failed to fetch commune data from the API");
         
         const communeData = await response.json();
