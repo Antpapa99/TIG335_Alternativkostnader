@@ -95,7 +95,13 @@ class TechDetail(APIView):
     
 
 
-
+class RedirectTechDetail(APIView):
+    def get(self, request, commune_name, format=None):
+        try:
+            commune = Technology.objects.get(commune_name=commune_name)
+            return redirect('tech_detail', commune_id=commune.id)
+        except Commune.DoesNotExist:
+            raise Http404
 
 
 

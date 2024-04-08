@@ -34,7 +34,7 @@ function addRow() {
 }
 
 // Allows you to delete a row
-function myDeleteFunction() {
+function rowDeleteFunction() {
     let table = document.getElementById("tekniktable").getElementsByTagName('tbody')[0];
     let lastRowIndex = table.rows.length - 1;
     if (lastRowIndex >= 0) {
@@ -45,4 +45,4 @@ function myDeleteFunction() {
 
 document.getElementById('addRowButton').addEventListener('click', addRow);
 
-document.getElementById("deleteRowButton").addEventListener('click', myDeleteFunction)
+document.getElementById("deleteRowButton").addEventListener('click', rowDeleteFunction)
