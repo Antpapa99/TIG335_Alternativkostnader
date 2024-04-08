@@ -38,12 +38,14 @@ function prepareData(communeId) {
     const technologies = [];
 
     rows.forEach(row => {
-        const teknik = row.querySelector(".teknikselect").value;
-        const installationer = row.querySelector(".installationer").value;
-        const minstallationer = row.querySelector(".minstallationer").value;
-        const kinstallation = row.querySelector(".kinstallation").value;
-        const binstallationsek = row.querySelector(".binstallationsek").value;
-        const binstallationHTE = row.querySelector(".binstallationHTE").value;
+        const teknik = row.cells[0].textContent;
+        const inputs = row.querySelectorAll("input");
+
+        const installationer = inputs[0].value || 0; // Default to 0 if value is empty
+        const minstallationer = inputs[1].value || 0;
+        const kinstallation = inputs[2].value || 0;
+        const binstallationsek = inputs[3].value || 0;
+        const binstallationHTE = inputs[4].value || 0;
 
         technologies.push({
             "tech_name": teknik,
