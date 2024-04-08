@@ -298,10 +298,14 @@ function populateDropdown(kommuner) {
   kommuner.forEach(function(kommun) {
       let option = document.createElement("option");
       option.text = kommun;
-      option.value = kommun;
+      option.value = kommun.replaceAll('å', 'a') 
+      .replaceAll('ä', 'a') 
+      .replaceAll('ö', 'o') 
+      .replaceAll(' ', '_'); 
       dropdown.appendChild(option);
-  });
-}
+  })
+};
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
