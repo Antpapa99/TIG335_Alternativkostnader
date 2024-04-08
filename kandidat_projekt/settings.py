@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'kandidat_projekt.wsgi.application'
 
 import os
 # om ni har ett problem med databas koppling i local mode bara sätt en not sats här
-if not DEBUG:
+if DEBUG:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     DATABASES = {
@@ -150,5 +150,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
