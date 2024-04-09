@@ -5,5 +5,5 @@ set -o errexit
 pip install -r requirements.txt
 
 python manage.py collectstatic --no-input
-python manage.py flush
+yes | python manage.py flush
 python manage.py migrate
