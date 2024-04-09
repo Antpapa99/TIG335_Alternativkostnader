@@ -49,8 +49,6 @@ function prepareData(communeName) {
         const installationer = inputs[0].value || 0; // Default to 0 if value is empty
         const minstallationer = inputs[1].value || 0;
         const kinstallation = inputs[2].value || 0;
-        const binstallationsek = inputs[3].value || 0;
-        const binstallationHTE = inputs[4].value || 0;
 
         
 
@@ -65,8 +63,7 @@ function prepareData(communeName) {
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),
-            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek),
-            "Arlig_besparing_per_installation_HTE": parseInt(binstallationHTE)
+            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek)
         });
     });
 

@@ -13,7 +13,6 @@ class Technology(models.Model):
     Mojliga_installationer = models.IntegerField()
     Kostnad_per_installation = models.FloatField()
     Arlig_besparing_per_installation_SEK = models.FloatField()
-    Arlig_besparing_per_installation_HTE = models.IntegerField()
 
     class Meta:
         # Remove unique constraint
