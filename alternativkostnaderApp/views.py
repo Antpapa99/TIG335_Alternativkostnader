@@ -35,66 +35,54 @@ class CommuneList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CommuneDetail(APIView):
-    def get_Commune(self, commune_id):
+    def get_Commune(self, commune_name):
         try:
-            return Commune.objects.get(pk=commune_id)
+            return Commune.objects.get(commune_name=commune_name)
         except Commune.DoesNotExist:
             raise Http404
     
-    def get(self, request, commune_id, format=None):
-        commune = self.get_Commune(commune_id)
+    def get(self, request, commune_name, format=None):
+        commune = self.get_Commune(commune_name)
         serializer = CommuneSerializer(commune)
         return Response(serializer.data)
     
-    def put(self, request, commune_id, format=None):
-        commune = self.get_Commune(commune_id)
+    def put(self, request, commune_name, format=None):
+        commune = self.get_Commune(commune_name)
         serializer = CommuneSerializer(commune, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, commune_id, format=None):
-        commune = self.get_Commune(commune_id)
+    def delete(self, request, commune_name, format=None):
+        commune = self.get_Commune(commune_name)
         commune.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class RedirectCommuneDetail(APIView):
-    def get(self, request, commune_name, format=None):
-        try:
-            commune = Commune.objects.get(commune_name=commune_name)
-            return redirect('commune_detail', commune_id=commune.id)
-        except Commune.DoesNotExist:
-            raise Http404
-    
 class TechDetail(APIView):
-    def get_tech(self, commune_id, tech_name):
+    def get_tech(self, commune_name, tech_name):
         try:
-            return Technology.objects.get(tech_name=tech_name, commune_name=commune_id,)
+            return Technology.objects.get(commune_name__commune_name=commune_name, tech_name=tech_name) #dubbla __ innebär bara att de söker igenom databasen på ett specifikt sätt
         except Technology.DoesNotExist:
             raise Http404
     
-    def get(self, request, commune_id, tech_name, format=None):
-        technology = self.get_tech(commune_id, tech_name)  # Pass both commune_id and tech_name
+    def get(self, request, commune_name, tech_name, format=None):
+        technology = self.get_tech(commune_name, tech_name)
         serializer = TechnologySerializer(technology)
         return Response(serializer.data)
-        
     
-    def put(self, request, commune_id, tech_name, format=None):
-        technology = self.get_tech(commune_id, tech_name)
+    def put(self, request, commune_name, tech_name, format=None):
+        technology = self.get_tech(commune_name, tech_name)
         serializer = TechnologySerializer(technology, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, commune_id, tech_name, format=None):
-        technology = self.get_Commune(commune_id, tech_name)
+    def delete(self, request, commune_name, tech_name, format=None):
+        technology = self.get_tech(commune_name, tech_name)
         technology.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
-
-
 
 
 

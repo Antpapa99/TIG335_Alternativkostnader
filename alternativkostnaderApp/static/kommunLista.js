@@ -293,15 +293,18 @@ const kommuner = [
 ];
 
 function populateDropdown(kommuner) {
-  let dropdown = document.getElementById("kommunid");
+  let dropdown = document.getElementById("kommunnamn");
 
   kommuner.forEach(function(kommun) {
       let option = document.createElement("option");
       option.text = kommun;
       option.value = kommun.replaceAll('å', 'a') 
       .replaceAll('ä', 'a') 
-      .replaceAll('ö', 'o') 
-      .replaceAll(' ', '_'); 
+      .replaceAll('ö', 'o')
+      .replaceAll('Ä', 'A')
+      .replaceAll('Å', 'A')
+      .replaceAll('Ö', 'o') 
+      .replaceAll(' ', '_');  
       dropdown.appendChild(option);
   })
 };
