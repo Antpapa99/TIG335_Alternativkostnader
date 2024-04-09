@@ -61,6 +61,11 @@ function populateFields(data) {
 }
 
 function clearFields() {
-    document.getElementById("kommunnamn").value = "";
-    document.querySelector("#tekniktable tbody").innerHTML = ""; // Clear table rows
+    const tableRows = document.querySelectorAll("#tekniktable tbody tr");
+    tableRows.forEach(row => {
+        const inputFields = row.querySelectorAll("input[type='number']");
+        inputFields.forEach(input => {
+            input.value = ""; // Clear input value
+        });
+    });
 }
