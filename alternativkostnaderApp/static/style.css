@@ -9,7 +9,7 @@
     min-height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
-    grid-template-rows: 0.3fr 1fr 1fr 1fr 1fr 0.5fr; 
+    grid-template-rows: 0.1fr 1fr 1fr 1fr 1fr 0.5fr; 
 
 }
 
@@ -39,19 +39,29 @@ a:link, a:visited {
 /* Stilar för index.html */
 
 #textbody {
-    text-align: center;
-    grid-area: 2/1/7/8;
+    grid-area: 3/2/7/7;
     overflow-x: auto;
+    margin: 0 auto;
+    margin-top: -70px;
+    margin-bottom: 10px;
+    max-width: 900px;
 }
 
 #titletext {
     font-size: 2.3em;
     padding-bottom: 40px;
     font-weight: 600;
+    text-align: center;
+    margin-top: auto;
 }
 
-#textbes {
+#textp {
     font-size: 1.2em;
+    text-align: justify;
+}
+
+#indextack {
+    text-align: center;
 }
 
 #bild1 {
@@ -80,12 +90,13 @@ a:link, a:visited {
     margin-top: 50px;
 }
 
-/* Stilar för data.html */
-
-#datatitle {
+#nextbuttondiv {
     text-align: center;
-    grid-area: 2/3/3/6;
+    font-size: 1em;
+
 }
+
+/* Stilar för data.html */
 
 #kommunchoice {
     text-align: left;
@@ -117,7 +128,6 @@ a:link, a:visited {
     font-weight: bold;
 }
 
-
 #inputfield label {
     margin-bottom: 10px; /* Öka avståndet mellan etiketterna */
 }
@@ -144,18 +154,24 @@ a:link, a:visited {
     margin-bottom: 10px; /* Lägg till luft under label-elementet */
 }
 
-
 #tekniktablediv {
-    grid-area: 2/1/7/8;
+    grid-area: 2/2/7/7;
     text-align: center;
     overflow-x: auto;
     padding-bottom: 20px;
     padding: 5px;
 }
 
+@media (max-width: 1400px) {
+    #tekniktablediv {
+        grid-area: 2/1/7/8;
+    }
+}
+
 #instruktioner {
     display: inline-block;
     text-align: left;
+    font-size: 1.1em;
 }
 
 .tooltip {

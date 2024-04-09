@@ -43,30 +43,29 @@ function prepareData(communeName) {
     const technologies = [];
 
     rows.forEach(row => {
-        const teknik = row.cells[0].textContent;
+        let teknik = row.cells[0].textContent;
         const inputs = row.querySelectorAll("input");
+        const teknikval = teknik.replaceAll('å', 'a') 
+        .replaceAll('ä', 'a') 
+        .replaceAll('ö', 'o')
+        .replaceAll('Ä', 'A')
+        .replaceAll('Å', 'A')
+        .replaceAll('Ö', 'o') 
+        .replaceAll(' ', '_')
 
-        const installationer = inputs[0].value || 0; // Default to 0 if value is empty
-        const minstallationer = inputs[1].value || 0;
-        const kinstallation = inputs[2].value || 0;
-        const binstallationsek = inputs[3].value || 0;
-        const binstallationHTE = inputs[4].value || 0;
+        const installationer = inputs[0].value || -1; 
+        const minstallationer = inputs[1].value || -1;
+        const kinstallation = inputs[2].value || -1;
+        const binstallationsek = inputs[3].value || -1;
 
         
 
         technologies.push({
-            "tech_name": teknik.replaceAll('å', 'a') 
-            .replaceAll('ä', 'a') 
-            .replaceAll('ö', 'o')
-            .replaceAll('Ä', 'A')
-            .replaceAll('Å', 'A')
-            .replaceAll('Ö', 'o') 
-            .replaceAll(' ', '_'),
+            "tech_name": teknikval,
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),
-            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek),
-            "Arlig_besparing_per_installation_HTE": parseInt(binstallationHTE)
+            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek)
         });
     });
 

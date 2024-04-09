@@ -8,11 +8,11 @@ window.onload = function() {
         cell.textContent = optionText;
         
         // Adding empty cells for other data
-        for (let i = 1; i < 6; i++) {
+        for (let i = 1; i < 5; i++) {
             let cell = newRow.insertCell(i);
             let input = document.createElement('input');
             input.type = 'text';
-            input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek', 'binstallationHTE'][i - 1]);
+            input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek'][i - 1]);
             cell.appendChild(input);
         }
     });
