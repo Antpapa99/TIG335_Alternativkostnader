@@ -17,6 +17,8 @@ async function getCommuneData() {
             // If commune exists, fetch data
             const responseData = await showCommune(communeName);
             populateFields(responseData);
+
+            
         } else {
             // If commune does not exist, clear fields
             clearFields();
@@ -39,6 +41,20 @@ async function showCommune(communeName) {
     }
 }
 
+const optionMappings = {
+    "Digitala_las": "Digitala lås",
+    "Digital_tillsyn_(dag)": "Digital tillsyn (dag)",
+    "Digital_tillsyn_(natt)": "Digital tillsyn (natt)",
+    "Lakemedelsrobot": "Läkemedelsrobot",
+    "Digitalt_larm_(GPS)": "Digitalt larm (GPS)",
+    "Digitalt_larm_(trygghet)": "Digitalt larm (trygghet)",
+    "Fallprevention": "Fallprevention"
+};
+
+function getDisplayText(optionText) {
+    return optionMappings[optionText] || optionText;
+}
+
 function populateFields(data) {
     document.getElementById("kommunnamn").value = data.commune_name;
 
@@ -50,7 +66,7 @@ function populateFields(data) {
     data.technologies.forEach(tech => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${tech.tech_name}</td>
+            <td>${getDisplayText(tech.tech_name)}</td>
             <td><input type="number" value="${tech.Antal_installationer}" /></td>
             <td><input type="number" value="${tech.Mojliga_installationer}" /></td>
             <td><input type="number" value="${tech.Kostnad_per_installation}" /></td>
