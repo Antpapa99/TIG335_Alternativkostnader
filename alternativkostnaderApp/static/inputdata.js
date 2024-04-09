@@ -49,6 +49,7 @@ function prepareData(communeName) {
         const installationer = inputs[0].value || 0; // Default to 0 if value is empty
         const minstallationer = inputs[1].value || 0;
         const kinstallation = inputs[2].value || 0;
+        const binstallationsek = inputs[3].value || 0;
 
         
 
