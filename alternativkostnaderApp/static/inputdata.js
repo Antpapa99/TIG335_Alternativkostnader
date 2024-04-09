@@ -45,13 +45,6 @@ function prepareData(communeName) {
     rows.forEach(row => {
         let teknik = row.cells[0].textContent;
         const inputs = row.querySelectorAll("input");
-        const teknikval = teknik.replaceAll('å', 'a') 
-        .replaceAll('ä', 'a') 
-        .replaceAll('ö', 'o')
-        .replaceAll('Ä', 'A')
-        .replaceAll('Å', 'A')
-        .replaceAll('Ö', 'o') 
-        .replaceAll(' ', '_')
 
         const installationer = inputs[0].value || -1; 
         const minstallationer = inputs[1].value || -1;
@@ -61,7 +54,7 @@ function prepareData(communeName) {
         
 
         technologies.push({
-            "tech_name": teknikval,
+            "tech_name": teknik,
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),

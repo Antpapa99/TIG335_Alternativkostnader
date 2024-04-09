@@ -7,7 +7,7 @@ class TechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = Technology
         fields = ['id', 'tech_name', 'Antal_installationer', 'Mojliga_installationer', 'Kostnad_per_installation', 
-                  'Arlig_besparing_per_installation_SEK']
+                  'Arlig_besparing_per_installation_SEK', 'slug']
                   
 
 
@@ -17,7 +17,7 @@ class CommuneSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Commune
-        fields = ['id', 'commune_name', 'technologies']
+        fields = ['id', 'commune_name', 'technologies', 'slug']
 
     
 

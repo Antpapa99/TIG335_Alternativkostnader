@@ -35,52 +35,52 @@ class CommuneList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CommuneDetail(APIView):
-    def get_Commune(self, commune_name):
+    def get_Commune(self, commune_slug):
         try:
-            return Commune.objects.get(commune_name=commune_name)
+            return Commune.objects.get(slug=commune_slug)
         except Commune.DoesNotExist:
             raise Http404
     
-    def get(self, request, commune_name, format=None):
-        commune = self.get_Commune(commune_name)
+    def get(self, request, commune_slug, format=None):
+        commune = self.get_Commune(commune_slug)
         serializer = CommuneSerializer(commune)
         return Response(serializer.data)
     
-    def put(self, request, commune_name, format=None):
-        commune = self.get_Commune(commune_name)
+    def put(self, request, commune_slug, format=None):
+        commune = self.get_Commune(commune_slug)
         serializer = CommuneSerializer(commune, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, commune_name, format=None):
-        commune = self.get_Commune(commune_name)
+    def delete(self, request, commune_slug, format=None):
+        commune = self.get_Commune(commune_slug)
         commune.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TechDetail(APIView):
-    def get_tech(self, commune_name, tech_name):
+    def get_tech(self, commune_slug, tech_slug):
         try:
-            return Technology.objects.get(commune_name__commune_name=commune_name, tech_name=tech_name) #dubbla __ innebär bara att de söker igenom databasen på ett specifikt sätt
+            return Technology.objects.get(commune_name__slug=commune_slug, slug=tech_slug)
         except Technology.DoesNotExist:
             raise Http404
     
-    def get(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def get(self, request, commune_slug, tech_slug, format=None):
+        technology = self.get_tech(commune_slug, tech_slug)
         serializer = TechnologySerializer(technology)
         return Response(serializer.data)
     
-    def put(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def put(self, request, commune_slug, tech_slug, format=None):
+        technology = self.get_tech(commune_slug, tech_slug)
         serializer = TechnologySerializer(technology, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def delete(self, request, commune_slug, tech_slug, format=None):
+        technology = self.get_tech(commune_slug, tech_slug)
         technology.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
