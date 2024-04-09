@@ -43,7 +43,7 @@ function prepareData(communeName) {
     const technologies = [];
 
     rows.forEach(row => {
-        const teknik = row.cells[0].textContent;
+        let teknik = row.cells[0].textContent;
         const inputs = row.querySelectorAll("input");
         const teknikval = teknik.replaceAll('å', 'a') 
         .replaceAll('ä', 'a') 
@@ -53,10 +53,10 @@ function prepareData(communeName) {
         .replaceAll('Ö', 'o') 
         .replaceAll(' ', '_')
 
-        const installationer = inputs[0].value || 0; // Default to 0 if value is empty
-        const minstallationer = inputs[1].value || 0;
-        const kinstallation = inputs[2].value || 0;
-        const binstallationsek = inputs[3].value || 0;
+        const installationer = inputs[0].value || -1; 
+        const minstallationer = inputs[1].value || -1;
+        const kinstallation = inputs[2].value || -1;
+        const binstallationsek = inputs[3].value || -1;
 
         
 
