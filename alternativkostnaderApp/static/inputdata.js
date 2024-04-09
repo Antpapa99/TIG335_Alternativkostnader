@@ -52,8 +52,16 @@ function prepareData(communeName) {
         const binstallationsek = inputs[3].value || 0;
         const binstallationHTE = inputs[4].value || 0;
 
+        
+
         technologies.push({
-            "tech_name": teknik,
+            "tech_name": teknik.replaceAll('å', 'a') 
+            .replaceAll('ä', 'a') 
+            .replaceAll('ö', 'o')
+            .replaceAll('Ä', 'A')
+            .replaceAll('Å', 'A')
+            .replaceAll('Ö', 'o') 
+            .replaceAll(' ', '_'),
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),

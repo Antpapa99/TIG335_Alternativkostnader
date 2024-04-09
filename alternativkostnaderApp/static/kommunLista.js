@@ -300,8 +300,11 @@ function populateDropdown(kommuner) {
       option.text = kommun;
       option.value = kommun.replaceAll('å', 'a') 
       .replaceAll('ä', 'a') 
-      .replaceAll('ö', 'o') 
-      .replaceAll(' ', '_'); 
+      .replaceAll('ö', 'o')
+      .replaceAll('Ä', 'A')
+      .replaceAll('Å', 'A')
+      .replaceAll('Ö', 'o') 
+      .replaceAll(' ', '_');  
       dropdown.appendChild(option);
   })
 };
