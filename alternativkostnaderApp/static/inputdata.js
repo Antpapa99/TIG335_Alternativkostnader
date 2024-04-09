@@ -14,11 +14,11 @@ async function fetchCommuneData() {
         if (communeExists) {
             // If commune exists, prepare data and send a PUT request
             const data = prepareData(communeName);
-            sendData(data, "PUT", `http://127.0.0.1:8000/commune/${communeName}`);
+            sendData(data, "PUT", `https://tig335-alternativkostnader.onrender.com/commune/${communeName}`);
         } else {
             // If commune does not exist, prepare data and send a POST request
             const data = prepareData(communeName);
-            sendData(data, "POST", "http://127.0.0.1:8000/commune/");
+            sendData(data, "POST", "https://tig335-alternativkostnader.onrender.com/commune/");
         }
     } catch (error) {
         console.error("Error fetching commune data:", error);
@@ -27,7 +27,7 @@ async function fetchCommuneData() {
 
 async function checkCommuneExistence(communeName) {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/commune/${communeName}`);
+        const response = await fetch(`https://tig335-alternativkostnader.onrender.com/commune/${communeName}`);
         return response.ok; // If the response is ok, commune exists
     } catch (error) {
         console.error("Error checking commune existence:", error);
