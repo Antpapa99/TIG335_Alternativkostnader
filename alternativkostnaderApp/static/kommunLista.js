@@ -303,8 +303,9 @@ function populateDropdown(kommuner) {
       .replaceAll('ö', 'o')
       .replaceAll('Ä', 'A')
       .replaceAll('Å', 'A')
-      .replaceAll('Ö', 'o') 
-      .replaceAll(' ', '_');  
+      .replaceAll('Ö', 'o')
+      .replaceAll(' kommun', '_')
+      .replaceAll(' ', '_')
       dropdown.appendChild(option);
   })
 };
