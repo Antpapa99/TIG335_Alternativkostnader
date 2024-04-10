@@ -6,6 +6,6 @@ urlpatterns = [
     path("data/", views.datainputpage),
     path('commune/', views.CommuneList.as_view()),
     path('commune/<str:commune_name>', views.CommuneDetail.as_view()),
-    path('commune/<str:commune_name>/<str:tech_name>', views.TechDetail.as_view()),
+    path('commune/<str:commune_name>/<slug:tech_slug>', views.TechDetail.as_view()),
 ]
 

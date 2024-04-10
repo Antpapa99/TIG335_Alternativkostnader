@@ -43,20 +43,6 @@ async function showCommune(communeName) {
     }
 }
 
-const optionMappings = {
-    "Digitala_las": "Digitala lås",
-    "Digital_tillsyn_(dag)": "Digital tillsyn (dag)",
-    "Digital_tillsyn_(natt)": "Digital tillsyn (natt)",
-    "Lakemedelsrobot": "Läkemedelsrobot",
-    "Digitalt_larm_(GPS)": "Digitalt larm (GPS)",
-    "Digitalt_larm_(trygghet)": "Digitalt larm (trygghet)",
-    "Fallprevention": "Fallprevention"
-};
-
-function getDisplayText(optionText) {
-    return optionMappings[optionText] || optionText;
-}
-
 function populateFields(data) {
     document.getElementById("kommunnamn").value = data.commune_name;
 
@@ -65,7 +51,7 @@ function populateFields(data) {
     data.technologies.forEach((tech, index) => {
         if (index < tableRows.length) {
             const row = tableRows[index];
-            row.cells[0].textContent = getDisplayText(tech.tech_name);
+            row.cells[0].textContent = tech.tech_name;
             row.cells[1].querySelector("input").value = tech.Antal_installationer;
             row.cells[2].querySelector("input").value = tech.Mojliga_installationer;
             row.cells[3].querySelector("input").value = tech.Kostnad_per_installation;
