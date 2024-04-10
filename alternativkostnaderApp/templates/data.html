@@ -42,8 +42,37 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Add rows here as needed -->
                 </tbody>
             </table>
+            <div id="instruktioner">
+                <h1>Lägg till din egna teknik</h1>
+            </div>
+            <table id="customtekniktable">
+                <thead>
+                    <tr>
+                        <tr>
+                            <th>Välfärdsteknik</th>
+                            <th>Antal installationer<span class="tooltip" title="Antalet installationer av varje teknik som ni har utfört inom äldreomsorgen.">?</span></th>
+                            <th>Antal möjliga installationer<span class="tooltip" title="Totala mängden installationer som kan göras i er kommun (inklusive befintliga installationer).">?</span></th>
+                            <th>Kostnad per installation<span class="tooltip" title="Konstnaden för att köpa in och installera respektive välfärdsteknik.">?</span></th>
+                            <th>Årlig besparing per installation (sek/år)<span class="tooltip" title="Pengar sparade per installation av en specifik teknisk enhet per år.">?</span></th>
+                        </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Add rows here as needed -->
+                </tbody>
+            </table>
+            <div class="RowParent">
+                <button type="button" id="addRowButton">
+                    Lägg till en ny teknologi
+                </button>
+
+                <button type="button" id="deleteRowButton">
+                    Ta bort en tillagd teknologi
+                </button>
+            </div>
 
             <button type="button" id="submitbutton">
                 Skicka in data
