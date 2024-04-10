@@ -15,7 +15,7 @@ class Technology(models.Model):
     Mojliga_installationer = models.IntegerField()
     Kostnad_per_installation = models.FloatField()
     Arlig_besparing_per_installation_SEK = models.FloatField()
-    slug = models.SlugField(max_length=100, unique=True, blank=True)
+    slug = models.SlugField(max_length=100, blank=True)
 
     class Meta:
         # Remove unique constraint
@@ -24,7 +24,12 @@ class Technology(models.Model):
     #Är relaterad till slug fältet, detta gör så att variabler med åäö eller mellan rum får urls som fungerar
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.tech_name)
+            base_slug = slugify(self.tech_name)
+            self.slug = base_slug
+            counter = 1
+            while Technology.objects.filter(commune_name=self.commune_name, slug=self.slug).exists():
+                self.slug = f"{base_slug}-{counter}"
+                counter += 1
         super().save(*args, **kwargs)
 
     def __str__(self):
