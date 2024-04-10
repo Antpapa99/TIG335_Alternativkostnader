@@ -24,10 +24,18 @@ class CommuneSerializer(serializers.ModelSerializer):
     #This function allows us to create a new object which has a nested object
     def create(self, validated_data):
         technologies_data = validated_data.pop('technologies')
-        commune_name = Commune.objects.create(**validated_data)
+        commune_instance = Commune.objects.create(**validated_data)
+
         for technology_data in technologies_data:
-            Technology.objects.create(commune_name=commune_name, **technology_data)
-        return commune_name
+            base_slug = slugify(technology_data['tech_name'])
+            slug = base_slug
+            counter = 1
+            while Technology.objects.filter(commune_name=commune_instance, slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            Technology.objects.create(commune_name=commune_instance, slug=slug, **technology_data)
+
+        return commune_instance
     
     #This here will probably need better variable names
     def update(self, instance, validated_data):
