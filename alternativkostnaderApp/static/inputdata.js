@@ -51,8 +51,26 @@ function prepareData(communeName) {
         const kinstallation = inputs[2].value || -1;
         const binstallationsek = inputs[3].value || -1;
 
-        
+        technologies.push({
+            "tech_name": teknik,
+            "Antal_installationer": parseInt(installationer),
+            "Mojliga_installationer": parseInt(minstallationer),
+            "Kostnad_per_installation": parseFloat(kinstallation),
+            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek)
+        });
+    });
 
+    // Collect data from custom rows
+    const customRows = document.querySelectorAll("#customtekniktable tbody tr");
+    customRows.forEach(row => {
+        const inputs = row.querySelectorAll("input");
+        const teknik = inputs[0].value;
+        const installationer = inputs[1].value || -1; 
+        const minstallationer = inputs[2].value || -1;
+        const kinstallation = inputs[3].value || -1;
+        const binstallationsek = inputs[4].value || -1;
+
+        // Push data to technologies array
         technologies.push({
             "tech_name": teknik,
             "Antal_installationer": parseInt(installationer),
@@ -68,7 +86,6 @@ function prepareData(communeName) {
         "technologies": technologies
     };
 }
-
 function getCookie(name) {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return cookieValue ? cookieValue.pop() : '';
