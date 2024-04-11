@@ -45,23 +45,34 @@ function prepareData(communeName) {
     rows.forEach(row => {
         let teknik = row.cells[0].textContent;
         const inputs = row.querySelectorAll("input");
-        const teknikval = teknik.replaceAll('å', 'a') 
-        .replaceAll('ä', 'a') 
-        .replaceAll('ö', 'o')
-        .replaceAll('Ä', 'A')
-        .replaceAll('Å', 'A')
-        .replaceAll('Ö', 'o') 
-        .replaceAll(' ', '_')
 
         const installationer = inputs[0].value || -1; 
         const minstallationer = inputs[1].value || -1;
         const kinstallation = inputs[2].value || -1;
         const binstallationsek = inputs[3].value || -1;
 
-        
-
         technologies.push({
-            "tech_name": teknikval,
+            "tech_name": teknik,
+            "Antal_installationer": parseInt(installationer),
+            "Mojliga_installationer": parseInt(minstallationer),
+            "Kostnad_per_installation": parseFloat(kinstallation),
+            "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek)
+        });
+    });
+
+    // Collect data from custom rows
+    const customRows = document.querySelectorAll("#customtekniktable tbody tr");
+    customRows.forEach(row => {
+        const inputs = row.querySelectorAll("input");
+        const teknik = inputs[0].value;
+        const installationer = inputs[1].value || -1; 
+        const minstallationer = inputs[2].value || -1;
+        const kinstallation = inputs[3].value || -1;
+        const binstallationsek = inputs[4].value || -1;
+
+        // Push data to technologies array
+        technologies.push({
+            "tech_name": teknik,
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),
@@ -75,7 +86,6 @@ function prepareData(communeName) {
         "technologies": technologies
     };
 }
-
 function getCookie(name) {
     const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return cookieValue ? cookieValue.pop() : '';

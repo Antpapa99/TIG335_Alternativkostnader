@@ -43,58 +43,91 @@ async function showCommune(communeName) {
     }
 }
 
-const optionMappings = {
-    "Digitala_las": "Digitala lås",
-    "Digital_tillsyn_(dag)": "Digital tillsyn (dag)",
-    "Digital_tillsyn_(natt)": "Digital tillsyn (natt)",
-    "Lakemedelsrobot": "Läkemedelsrobot",
-    "Digitalt_larm_(GPS)": "Digitalt larm (GPS)",
-    "Digitalt_larm_(trygghet)": "Digitalt larm (trygghet)",
-    "Fallprevention": "Fallprevention"
-};
-
-function getDisplayText(optionText) {
-    return optionMappings[optionText] || optionText;
-}
-
-function populateFields(data) {
+async function populateFields(data) {
     document.getElementById("kommunnamn").value = data.commune_name;
 
-    const tableRows = document.querySelectorAll("#tekniktable tbody tr");
+    const originalTableRows = document.querySelectorAll("#tekniktable tbody tr");
+    const customTableBody = document.querySelector("#customtekniktable tbody");
 
+    // Populate fields for original technologies
     data.technologies.forEach((tech, index) => {
-        if (index < tableRows.length) {
-            const row = tableRows[index];
-            row.cells[0].textContent = getDisplayText(tech.tech_name);
+        if (index < originalTableRows.length) {
+            const row = originalTableRows[index];
+            row.cells[0].textContent = tech.tech_name;
             row.cells[1].querySelector("input").value = tech.Antal_installationer;
             row.cells[2].querySelector("input").value = tech.Mojliga_installationer;
             row.cells[3].querySelector("input").value = tech.Kostnad_per_installation;
             row.cells[4].querySelector("input").value = tech.Arlig_besparing_per_installation_SEK;
         } else {
-            console.error("Not enough existing rows for population.");
+            console.error("Not enough existing rows for original technologies.");
             return;
         }
     });
 
-    // Clear any remaining rows if fetched data has fewer technologies
-    for (let i = data.technologies.length; i < tableRows.length; i++) {
-        tableRows[i].cells[0].textContent = "";
-        tableRows[i].cells[1].querySelector("input").value = "";
-        tableRows[i].cells[2].querySelector("input").value = "";
-        tableRows[i].cells[3].querySelector("input").value = "";
-        tableRows[i].cells[4].querySelector("input").value = "";
+    // Clear any remaining rows if fetched data has fewer original technologies
+    for (let i = data.technologies.length; i < originalTableRows.length; i++) {
+        originalTableRows[i].cells[0].textContent = "";
+        originalTableRows[i].cells[1].querySelector("input").value = "";
+        originalTableRows[i].cells[2].querySelector("input").value = "";
+        originalTableRows[i].cells[3].querySelector("input").value = "";
+        originalTableRows[i].cells[4].querySelector("input").value = "";
     }
+
+    // Populate fields for custom technologies or add new rows if necessary
+    data.technologies.slice(originalTableRows.length).forEach(tech => {
+        const existingRow = findCustomRow(tech.tech_name);
+        if (existingRow) {
+            // Populate existing row
+            const inputs = existingRow.querySelectorAll("input");
+            inputs[0].value = tech.Antal_installationer;
+            inputs[1].value = tech.Mojliga_installationer;
+            inputs[2].value = tech.Kostnad_per_installation;
+            inputs[3].value = tech.Arlig_besparing_per_installation_SEK;
+        } else {
+            // Add new row for custom technology
+            addCustomRow(tech);
+        }
+    });
+}
+
+function findCustomRow(techName) {
+    const customTableRows = document.querySelectorAll("#customtekniktable tbody tr");
+    for (let i = 0; i < customTableRows.length; i++) {
+        const rowTechName = customTableRows[i].querySelector("input").value;
+        if (rowTechName === techName) {
+            return customTableRows[i];
+        }
+    }
+    return null;
+}
+
+function addCustomRow(tech) {
+    const newRow = document.createElement('tr');
+    const inputs = ['tech_name', 'Antal_installationer', 'Mojliga_installationer', 'Kostnad_per_installation', 'Arlig_besparing_per_installation_SEK'];
+    inputs.forEach(prop => {
+        const cell = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = prop === 'tech_name' ? tech[prop] : (tech[prop] || '');
+        cell.appendChild(input);
+        newRow.appendChild(cell);
+    });
+    document.querySelector("#customtekniktable tbody").appendChild(newRow);
 }
 
 function clearFields() {
     console.log("Clearing fields...");
-    const tableRows = document.querySelectorAll("#tekniktable tbody tr");
-    tableRows.forEach(row => {
-        // Select all input fields within the row
+
+    // Clear fields for original technologies
+    const originalTableRows = document.querySelectorAll("#tekniktable tbody tr");
+    originalTableRows.forEach(row => {
         const inputFields = row.querySelectorAll("input");
         inputFields.forEach(input => {
-            // Clear the value of input fields in the row
             input.value = "";
         });
     });
+
+    // Clear fields for custom technologies and delete custom rows
+    const customTableBody = document.querySelector("#customtekniktable tbody");
+    customTableBody.innerHTML = "";
 }

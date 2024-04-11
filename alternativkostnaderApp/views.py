@@ -60,27 +60,27 @@ class CommuneDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TechDetail(APIView):
-    def get_tech(self, commune_name, tech_name):
+    def get_tech(self, commune_name, tech_slug):
         try:
-            return Technology.objects.get(commune_name__commune_name=commune_name, tech_name=tech_name) #dubbla __ innebär bara att de söker igenom databasen på ett specifikt sätt
+            return Technology.objects.get(commune_name__commune_name=commune_name, slug=tech_slug)
         except Technology.DoesNotExist:
             raise Http404
     
-    def get(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def get(self, request, commune_name, tech_slug, format=None):
+        technology = self.get_tech(commune_name, tech_slug)
         serializer = TechnologySerializer(technology)
         return Response(serializer.data)
     
-    def put(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def put(self, request, commune_name, tech_slug, format=None):
+        technology = self.get_tech(commune_name, tech_slug)
         serializer = TechnologySerializer(technology, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def delete(self, request, commune_name, tech_name, format=None):
-        technology = self.get_tech(commune_name, tech_name)
+    def delete(self, request, commune_name, tech_slug, format=None):
+        technology = self.get_tech(commune_name, tech_slug)
         technology.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 

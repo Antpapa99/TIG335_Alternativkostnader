@@ -304,8 +304,7 @@ function populateDropdown(kommuner) {
       .replaceAll('Ä', 'A')
       .replaceAll('Å', 'A')
       .replaceAll('Ö', 'o')
-      .replaceAll(' kommun', '')
-      .replaceAll(' ', '_')
+      .replaceAll(' ', '-')
       
       dropdown.appendChild(option);
   })

@@ -17,11 +17,12 @@
             
             <h3>Instruktioner</h3>
             <div id="instruktioner">
-                <p>1. Ange den kommun som du ska ange data för i drop-down menyn ovanför tablån</p>
-                <p>2. Mata in relevant data i inputfälten för varje typ av teknik</p>
+                <p>1.Välj den kommun som du ska ange data för i drop-down menyn ovanför tabellen</p>
+                <p>2. Mata in era datavärden i inputfälten för varje typ av teknik</p>
                 <p>3. När du är färdig med att mata in din data klickar du på "Skicka in data"-knappen så att det lagras i vår databas</p>
                 <p>4. Du väljer sedan ett av verktygen för att ta del av visuella representationer och jämförelser av din data</p>
-                <p>TIPS: För ytterligare information om våra parametrar kan du göra en mouse-over på tooltipsen bredvid rubrikerna!</p>
+                <p>5. För att uppdatera existerande data, välj kommun, ändra värden och skicka in igen</p>
+                <p id="instruktioner1">Om exakta värden saknas, uppmuntrar vi er till att uppskatta och estimera till bästa möjliga förmåga</p>
             </div>
             <article id="kommunchoice">
                 <label for="kommunid">Välj din kommun</label>
@@ -35,15 +36,44 @@
                 <thead>
                     <tr>
                         <th>Välfärdsteknik</th>
-                        <th>Antal installationer<span class="tooltip" title="Antalet installationer av varje teknik som ni har utfört inom äldreomsorgen.">?</span></th>
-                        <th>Antal möjliga installationer<span class="tooltip" title="Totala mängden installationer som kan göras i er kommun (inklusive befintliga installationer).">?</span></th>
-                        <th>Kostnad per installation<span class="tooltip" title="Konstnaden för att köpa in och installera respektive välfärdsteknik.">?</span></th>
-                        <th>Årlig besparing per installation (sek/år)<span class="tooltip" title="Pengar sparade per installation av en specifik teknisk enhet per år.">?</span></th>
+                        <th>Antal installationer<span class="tooltip" title="Antalet installationer av varje teknik som ni har utfört inom äldreomsorgen, särkilt boende + ordinärt boende.">?</span></th>
+                        <th>Antal möjliga installationer<span class="tooltip" title="Totala mängden installationer som kan göras i er kommun, särkilt boende + ordinärt boende (inklusive befintliga installationer).">?</span></th>
+                        <th>Kostnad per installation<span class="tooltip" title="Konstnaden för att köpa in och installera en enhet av respektive välfärdsteknik">?</span></th>
+                        <th>Årlig besparing per installation (sek/år)<span class="tooltip" title="SEK/år besparade per enhet av respektive välfärdsteknik">?</span></th>
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Add rows here as needed -->
                 </tbody>
             </table>
+            <div id="instruktioner">
+                <h1>Lägg till din egna teknik</h1>
+            </div>
+            <table id="customtekniktable">
+                <thead>
+                    <tr>
+                        <tr>
+                            <th>Välfärdsteknik</th>
+                            <th>Antal installationer<span class="tooltip" title="Antalet installationer av varje teknik som ni har utfört inom äldreomsorgen.">?</span></th>
+                            <th>Antal möjliga installationer<span class="tooltip" title="Totala mängden installationer som kan göras i er kommun (inklusive befintliga installationer).">?</span></th>
+                            <th>Kostnad per installation<span class="tooltip" title="Konstnaden för att köpa in och installera respektive välfärdsteknik.">?</span></th>
+                            <th>Årlig besparing per installation (sek/år)<span class="tooltip" title="Pengar sparade per installation av en specifik teknisk enhet per år.">?</span></th>
+                        </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Add rows here as needed -->
+                </tbody>
+            </table>
+            <div class="RowParent">
+                <button type="button" id="addRowButton">
+                    Lägg till en ny teknologi
+                </button>
+
+                <button type="button" id="deleteRowButton">
+                    Ta bort en tillagd teknologi
+                </button>
+            </div>
 
             <button type="button" id="submitbutton">
                 Skicka in data

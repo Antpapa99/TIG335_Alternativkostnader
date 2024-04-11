@@ -24,5 +24,22 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
+function addRow() {
+    // Check if the maximum limit of rows has been reached
+    let table = document.getElementById('customtekniktable').getElementsByTagName('tbody')[0];
+
+    let newRow = table.insertRow(table.rows.length);
+    let cells = [];
+
+    for (let i = 0; i < 5; i++) {
+        cells.push(newRow.insertCell(i));
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.classList.add(['teknikselect', 'installationer', 'minstallationer', 'kinstallation', 'binstallationsek'][i - 1]);
+            cells[i].appendChild(input);
+    }
+}
+
+document.getElementById('addRowButton').addEventListener('click', addRow);
 
 document.getElementById("deleteRowButton").addEventListener('click', rowDeleteFunction)

@@ -15,13 +15,9 @@
 
 .footersect {
     text-align: center;
-    position: relative;
-    bottom: 0;
     width: 100%;
     background-color: black;
     color: white;
-    padding-top: 3px;
-    padding-bottom: 3px;
     margin-top: auto;
     grid-area: 7/1/8/8;
 }
@@ -110,11 +106,34 @@ a:link, a:visited {
     width: 100%; /* Fyll ut tabellen tillgängligt utrymme */
 }
 
+#customtekniktable {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse; /* Slå ihop gränserna mellan celler */
+    width: 100%; /* Fyll ut tabellen tillgängligt utrymme */
+}
+
 #tekniktable th,
 #tekniktable td {
     padding: 10px; /* Lägg till padding för att öka avståndet runt texten i cellerna */
     border: 1px solid black; /* Lägg till gränser runt cellerna */
 }
+
+#customtekniktable th,
+#customtekniktable td {
+    padding: 10px; /* Lägg till padding för att öka avståndet runt texten i cellerna */
+    border: 1px solid black; /* Lägg till gränser runt cellerna */
+}
+
+.RowParent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    }
+    
+    
 
 #submitbutton {
     width: 120px;
@@ -126,6 +145,32 @@ a:link, a:visited {
     border-radius: 15px;
     font-size: 0.8em;
     font-weight: bold;
+}
+
+#addRowButton {
+    width: 120px;
+    height: 35px;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+#deleteRowButton {
+    width: 120px;
+    height: 35px;
+    margin: 20px auto;
+    display: block;
+    color: white;
+    background-color: black;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    grid-area: 1 / 4 / 2 / 5;
 }
 
 #inputfield label {
@@ -158,7 +203,7 @@ a:link, a:visited {
     grid-area: 2/2/7/7;
     text-align: center;
     overflow-x: auto;
-    padding-bottom: 20px;
+    margin-bottom: 40px;
     padding: 5px;
 }
 
@@ -176,8 +221,13 @@ a:link, a:visited {
 
 .tooltip {
     padding: 2px 5px;
-    color: rgb(20, 20, 185);
-    background-color: rgba(0,0,0,0.1);
+    color: rgb(136, 136, 136);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 100%;
     margin-left: 5px;
+    border: 1px solid;
+}
+
+#instruktioner1{
+    font-weight: bold;
 }
