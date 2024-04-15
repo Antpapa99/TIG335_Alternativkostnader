@@ -37,8 +37,13 @@ async function checkCommuneExistence(communeName) {
 
 
 function prepareData(communeName) {
-    const kommun = document.getElementById("kommunnamn").value;
+    const kommun = document.getElementById("kommunnamn");
+    console.log("Selected municipality element:", kommun);
+    console.log("Selected municipality value:", kommun.value);
+    console.log("Selected municipality text:", kommun.text);
     const rows = document.querySelectorAll("#tekniktable tbody tr");
+
+    const selectedOption = kommun.options[kommun.selectedIndex];
 
     const technologies = [];
 
@@ -72,7 +77,7 @@ function prepareData(communeName) {
 
         // Push data to technologies array
         technologies.push({
-            "tech_name": teknik,
+            "tech_name": `Custom-${teknik}`,
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),
@@ -80,10 +85,18 @@ function prepareData(communeName) {
         });
     });
 
+    console.log("Prepared data:", {
+        "id": communeName,
+        "commune_name": kommun.value,
+        "technologies": technologies,
+        "display_name": selectedOption.textContent 
+    });
+
     return {
         "id": communeName,
-        "commune_name": kommun,
-        "technologies": technologies
+        "commune_name": kommun.value,
+        "technologies": technologies,
+        "display_name": selectedOption.textContent
     };
 }
 function getCookie(name) {

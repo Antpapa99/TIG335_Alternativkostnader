@@ -3,6 +3,7 @@ from django.utils.text import slugify
 
 class Commune(models.Model):
     commune_name = models.CharField(max_length=100, unique=True)
+    display_name = models.CharField(max_length=100, blank=True, null=True)
 
 
     def __str__(self):

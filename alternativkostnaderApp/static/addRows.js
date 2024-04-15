@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (let i = 1; i < 5; i++) {
             let cell = document.createElement('td');
             let input = document.createElement('input');
-            input.type = 'text';
+            input.type = 'number';
             input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek'][i - 1]);
             cell.appendChild(input);
             newRow.appendChild(cell);
@@ -34,12 +34,26 @@ function addRow() {
     for (let i = 0; i < 5; i++) {
         cells.push(newRow.insertCell(i));
             let input = document.createElement('input');
-            input.type = 'text';
+            if (i === 0) {
+                input.type = 'text'; // For teknikselect
+            } else {
+                input.type = 'number'; // For other classes
+            }
             input.classList.add(['teknikselect', 'installationer', 'minstallationer', 'kinstallation', 'binstallationsek'][i - 1]);
             cells[i].appendChild(input);
     }
 }
 
+function DeleteRow() {
+    let table = document.getElementById('customtekniktable').getElementsByTagName('tbody')[0];
+
+    if (table.rows.length > 0) {
+        // Ta bort den senaste tillagda raden
+        table.deleteRow(table.rows.length - 1);
+    }
+
+}
+
 document.getElementById('addRowButton').addEventListener('click', addRow);
 
-document.getElementById("deleteRowButton").addEventListener('click', rowDeleteFunction)
+document.getElementById("deleteRowButton").addEventListener('click', DeleteRow)
