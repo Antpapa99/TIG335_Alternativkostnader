@@ -17,14 +17,15 @@ class CommuneSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Commune
-        fields = ['id', 'commune_name', 'technologies']
+        fields = ['id', 'commune_name', 'technologies', 'display_name']
 
     
 
     #This function allows us to create a new object which has a nested object
     def create(self, validated_data):
         technologies_data = validated_data.pop('technologies')
-        commune_instance = Commune.objects.create(**validated_data)
+        display_name = validated_data.pop('display_name')  # Get the display_name from validated data
+        commune_instance = Commune.objects.create(commune_name=validated_data['commune_name'], display_name=display_name)
 
         for technology_data in technologies_data:
             base_slug = slugify(technology_data['tech_name'])
