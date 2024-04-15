@@ -28,8 +28,15 @@ class CommuneSerializer(serializers.ModelSerializer):
         commune_instance = Commune.objects.create(commune_name=validated_data['commune_name'], display_name=display_name)
 
         for technology_data in technologies_data:
-            Technology.objects.create(commune_name=commune_name, **technology_data)
-        return commune_name
+            base_slug = slugify(technology_data['tech_name'])
+            slug = base_slug
+            counter = 1
+            while Technology.objects.filter(commune_name=commune_instance, slug=slug).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            Technology.objects.create(commune_name=commune_instance, slug=slug, **technology_data)
+
+        return commune_instance
     
     #This here will probably need better variable names
     def update(self, instance, validated_data):
