@@ -72,7 +72,7 @@ async function populateFields(data) {
         originalTableRows[i].cells[3].querySelector("input").value = "";
         originalTableRows[i].cells[4].querySelector("input").value = "";
     }
-
+/*
     // Populate fields for custom technologies or add new rows if necessary
     data.technologies.slice(originalTableRows.length).forEach(tech => {
         const existingRow = findCustomRow(tech.tech_name);
@@ -88,13 +88,14 @@ async function populateFields(data) {
             addCustomRow(tech);
         }
     });
+*/
 }
 
 function findCustomRow(techName) {
     const customTableRows = document.querySelectorAll("#customtekniktable tbody tr");
     for (let i = 0; i < customTableRows.length; i++) {
         const rowTechName = customTableRows[i].querySelector("input").value;
-        if (rowTechName === techName) {
+        if (rowTechName.includes("Custom") && rowTechName === techName) {
             return customTableRows[i];
         }
     }
@@ -129,5 +130,15 @@ function clearFields() {
 
     // Clear fields for custom technologies and delete custom rows
     const customTableBody = document.querySelector("#customtekniktable tbody");
+if (customTableBody.children.length > 0) {
+    // Clear fields for custom technologies
     customTableBody.innerHTML = "";
+
+    console.log("Custom technology fields cleared and rows deleted.");
+} else {
+    console.log("No custom technology rows present.");
+}
+
+    
+    
 }
