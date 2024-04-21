@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
+/* 
 function addRow() {
     // Check if the maximum limit of rows has been reached
     let table = document.getElementById('customtekniktable').getElementsByTagName('tbody')[0];
@@ -52,7 +53,7 @@ function DeleteRow() {
         table.deleteRow(table.rows.length - 1);
     }
 
-}
+} */
 
 document.getElementById('addRowButton').addEventListener('click', addRow);
 
