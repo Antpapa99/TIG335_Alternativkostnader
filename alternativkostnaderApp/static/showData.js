@@ -47,7 +47,7 @@ async function populateFields(data) {
     document.getElementById("kommunnamn").value = data.commune_name;
 
     const originalTableRows = document.querySelectorAll("#tekniktable tbody tr");
-    const customTableBody = document.querySelector("#customtekniktable tbody");
+    //const customTableBody = document.querySelector("#customtekniktable tbody");
 
     // Populate fields for original technologies
     data.technologies.forEach((tech, index) => {
@@ -128,6 +128,7 @@ function clearFields() {
         });
     });
 
+/*
     // Clear fields for custom technologies and delete custom rows
     const customTableBody = document.querySelector("#customtekniktable tbody");
 if (customTableBody.children.length > 0) {
@@ -139,6 +140,6 @@ if (customTableBody.children.length > 0) {
     console.log("No custom technology rows present.");
 }
 
-    
+*/
     
 }
