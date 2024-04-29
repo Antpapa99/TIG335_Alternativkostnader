@@ -302,7 +302,7 @@ function populateDropdown(kommuner) {
       .replaceAll('ö', 'o')
       .replaceAll('Ä', 'A')
       .replaceAll('Å', 'A')
-      .replaceAll('Ö', 'o')
+      .replaceAll('Ö', 'O')
       .replaceAll(' ', '-')
       
       dropdown.appendChild(option);
