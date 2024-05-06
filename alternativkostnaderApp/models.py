@@ -15,6 +15,7 @@ class Technology(models.Model):
     Antal_installationer = models.IntegerField()
     Mojliga_installationer = models.IntegerField()
     Kostnad_per_installation = models.FloatField()
+    Arlig_kostnad_per_installation = models.FloatField()
     Arlig_besparing_per_installation_SEK = models.FloatField()
     slug = models.SlugField(max_length=100, blank=True)
 

@@ -6,7 +6,7 @@ from .models import *
 class TechnologySerializer(serializers.ModelSerializer):
     class Meta:
         model = Technology
-        fields = ['id', 'tech_name', 'Antal_installationer', 'Mojliga_installationer', 'Kostnad_per_installation', 
+        fields = ['id', 'tech_name', 'Antal_installationer', 'Mojliga_installationer', 'Kostnad_per_installation', 'Arlig_kostnad_per_installation'
                   'Arlig_besparing_per_installation_SEK', 'slug']
                   
 

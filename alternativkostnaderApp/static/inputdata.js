@@ -54,13 +54,16 @@ function prepareData(communeName) {
         const installationer = inputs[0].value || -1; 
         const minstallationer = inputs[1].value || -1;
         const kinstallation = inputs[2].value || -1;
-        const binstallationsek = inputs[3].value || -1;
+        const maintaininstallation = inputs[3].value || -1;
+        const binstallationsek = inputs[4].value || -1;
+        
 
         technologies.push({
             "tech_name": teknik,
             "Antal_installationer": parseInt(installationer),
             "Mojliga_installationer": parseInt(minstallationer),
             "Kostnad_per_installation": parseFloat(kinstallation),
+            "Arlig_kostnad_per_installation": parseFloat(maintaininstallation),
             "Arlig_besparing_per_installation_SEK": parseFloat(binstallationsek)
         });
     });

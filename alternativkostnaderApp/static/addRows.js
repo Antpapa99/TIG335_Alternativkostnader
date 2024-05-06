@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             let cell = document.createElement('td');
             let input = document.createElement('input');
             input.type = 'number';
-            input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'binstallationsek'][i - 1]);
+            input.classList.add(['installationer', 'minstallationer', 'kinstallation', 'maintaininstallation', 'binstallationsek'][i - 1]);
             cell.appendChild(input);
             newRow.appendChild(cell);
         }
