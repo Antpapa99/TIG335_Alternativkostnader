@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'kandidat_projekt.wsgi.application'
 
 import os
 # om ni har ett problem med databas koppling i local mode bara sätt en not sats här
-if DEBUG:
+if not DEBUG:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 else:
     DATABASES = {
