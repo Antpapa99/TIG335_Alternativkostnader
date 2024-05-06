@@ -72,6 +72,7 @@ async function populateFields(data) {
         originalTableRows[i].cells[2].querySelector("input").value = "";
         originalTableRows[i].cells[3].querySelector("input").value = "";
         originalTableRows[i].cells[4].querySelector("input").value = "";
+        originalTableRows[i].cells[5].querySelector("input").value = "";
     }
 /*
     // Populate fields for custom technologies or add new rows if necessary
