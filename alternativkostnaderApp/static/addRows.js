@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         newRow.appendChild(cell);
         
         // Adding empty cells for other data
-        for (let i = 1; i < 5; i++) {
+        for (let i = 1; i < 6; i++) {
             let cell = document.createElement('td');
             let input = document.createElement('input');
             input.type = 'number';
