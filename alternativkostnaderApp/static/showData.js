@@ -57,7 +57,8 @@ async function populateFields(data) {
             row.cells[1].querySelector("input").value = tech.Antal_installationer;
             row.cells[2].querySelector("input").value = tech.Mojliga_installationer;
             row.cells[3].querySelector("input").value = tech.Kostnad_per_installation;
-            row.cells[4].querySelector("input").value = tech.Arlig_besparing_per_installation_SEK;
+            row.cells[4].querySelector("input").value = tech.Arlig_kostnad_per_installation;
+            row.cells[5].querySelector("input").value = tech.Arlig_besparing_per_installation_SEK;
         } else {
             console.error("Not enough existing rows for original technologies.");
             return;
